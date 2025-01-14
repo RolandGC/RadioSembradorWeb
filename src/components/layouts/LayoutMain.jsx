@@ -29,11 +29,11 @@ const links = [
         text: "Nosotros",
         id: 2,
     },
-    {
-        link: "/ia/inicioia",
-        text: "Servicios",
-        id: 3,
-    },
+    // {
+    //     link: "/ia/inicioia",
+    //     text: "Servicios",
+    //     id: 3,
+    // },
     {
         link: "/blog",
         text: "Blog",
@@ -123,7 +123,7 @@ const LayoutMain = () => {
                                     {isMenuOpen ? <AiOutlineClose className="text-[35px] text-gray-500" /> : <AiOutlineMenu className="text-[35px] text-gray-500" />}
                                 </button>
                             </div>
-                            <div className='flex flex-col md:flex-row'>
+                            {/* <div className='flex flex-col md:flex-row'>
                                 <Link className="bg-white hover:bg-purple1 hover:text-white m-2 p-2 items-center flex text-gray-700 border border-purple1 justify-center font-urbanist" to="/usuario/publicar">
                                     <FaPlus />
                                     Registrarse
@@ -163,7 +163,7 @@ const LayoutMain = () => {
                                         </Link>
                                     )
                                 }
-                            </div>
+                            </div> */}
                         </div>
 
                         <main className='bg-gray-200 '>
@@ -174,8 +174,8 @@ const LayoutMain = () => {
                             <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-8 p-14'>
                                 <div className='flex'>
                                     <div className='flex-1 font-josefin '>
-                                        <p className='text-gray-700 font-ubuntu  font-bold mb-2'>ISO AND ISO</p>
-                                        <span className='text-gray-400 font-urbanist'> Somos una empresa de integración de tecnología y somos expertos en ayudar a digitalizar sistemas operativos según estándares ISO.</span>
+                                        <p className='text-gray-700 font-ubuntu  font-bold mb-2'>Radio Sembrador</p>
+                                            <span className='text-gray-400 font-urbanist'> Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite Desde Tacna – Peru</span>
                                     </div>
                                 </div>
                                 <div className='bg-white text-gray-400 text-sm flex-1 font-urbanist'>
@@ -207,8 +207,8 @@ const LayoutMain = () => {
                                             </div>
                                             <div className='flex flex-col text-xs'>
                                                 <h5 className='text-gray-500 whitespace-normal'>EMAILS</h5>
-                                                <a className='text-blue-500' href="info@remax.net.pe">isoandiso@email.com</a>
-                                                <a className='text-blue-500' href="">iso@com.pe</a>
+                                                <a className='text-blue-500' href="info@remax.net.pe">radiosembrador@email.com</a>
+                                                    <a className='text-blue-500' href="">radiosembrador.pe</a>
                                             </div>
                                         </li>
                                     </ul>

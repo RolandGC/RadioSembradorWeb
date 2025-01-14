@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { TbDeviceIpadSearch } from "react-icons/tb"
 import { SlRocket } from "react-icons/sl"
 import { FaHouseUser } from "react-icons/fa"
-import isoImage from '/public/img/iso.webp';
+import isoImage from '/public/img/radioo.jpg';
 import { GiBullseye } from "react-icons/gi";
 
 const Us = () => {
@@ -13,8 +13,8 @@ const Us = () => {
             href: '/item',
             imageSrc: '/public/img/daniel.jpeg',
             imageAlt: "Front of men's Basic Tee in black.",
-            title: 'líder UX/UI',
-            name: 'Daniel Mena ',
+            title: 'Adminstrador',
+            name: 'Julio Mamani',
             buttonColor: 'bg-red-500'
         },
         {
@@ -22,8 +22,8 @@ const Us = () => {
             href: '/item',
             imageSrc: '/public/img/back.jpeg',
             imageAlt: "Front of men's Basic Tee in black.",
-            title: 'Líder Desarrollador Backend',
-            name: 'Jackson Quintero',
+            title: 'Coordinador',
+            name: 'Javier alanoca',
             buttonColor: 'bg-red-500'
         },
     ]
@@ -50,7 +50,7 @@ const Us = () => {
                                 </h1>
 
                                 <p className="mt-4 max-w-lg sm:text-xl/relaxed text-white">
-                                    una empresa de integración de tecnología y somos expertos en ayudar a digitalizar sistemas operativos según estándares ISO. También nos encargamos de dar seguimiento a las empresas interesadas durante todo el proceso de digitalización
+                                    Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite Desde Tacna – Peru.
                                 </p>
 
 
@@ -69,7 +69,7 @@ const Us = () => {
                                 </div>
                                 <div className=''>
                                     <h3 className="text-center text-3xl font-semibold leading-7  text-gray-900 font-ubuntu my-2"> Misión</h3>
-                                    <p className="text-sm font-medium font-urbanist leading-6 text-gray-700 my-2">Somos Empresa del Sector Tecnológico especializado en Normas ISO (Seguridad y Salud en el Trabajo, Medio ambiente y Calidad) que ofrece un sistema digital e integral y con un equipo de trabajo respetuoso de la ley y de las normas ISO de seguridad, además de estar orientados en la innovación continua.</p>
+                                    <p className="text-sm font-medium font-urbanist leading-6 text-gray-700 my-2">Somos sembradores de la palabra.</p>
                                 </div>
                             </div>
                         </li>
@@ -80,7 +80,7 @@ const Us = () => {
                                 </div>
                                 <div className=''>
                                     <h3 className="text-center text-3xl font-semibold leading-7 text-gray-900 font-ubuntu  my-2"> Visón</h3>
-                                    <p className="text-sm font-medium font-urbanist leading-6 text-gray-700 my-2">Ser una empresa reconocida por su calidad y desarrollo en el Sistema Digital en base a las Normas ISO que da como resultado la eficiencia de resultados inmediatos y analisis de datos.</p>
+                                    <p className="text-sm font-medium font-urbanist leading-6 text-gray-700 my-2">Ser una Radio que de gloria a Dios.</p>
                                 </div>
                             </div>
                         </li>

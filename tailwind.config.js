@@ -16,7 +16,7 @@ export default {
                 green1: '#1B7895',
                 blue2: '#174966',
                 blue3: '#24BFCF',
-                purple1: '#2c3793',
+                purple1: '#00ac9e',
             },
             spacing: {
                 '200': '50rem',

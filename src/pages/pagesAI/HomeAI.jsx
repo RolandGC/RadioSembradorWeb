@@ -3,7 +3,7 @@ import ItemSell from '../../components/items/ItemSell';
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import PrestenText from '../../components/iaIntegrated/PrestenText';
-import bg from '/public/video/intro.mp4'
+import bg from '/public/video/introRadio.mp4'
 import Flyer2 from '../../components/home/flyers/Flyer2';
 
 const images = [

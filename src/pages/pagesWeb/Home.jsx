@@ -13,7 +13,7 @@ import ItemSellOk from '../../components/items/ItemSellOk';
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import bg from '/video/video02.mp4'
+import bg from '/video/introRadio.mp4'
 import Flyer from '../../components/home/flyers/Flyer';
 import PrestenText1 from '../../components/home/PrestenText';
 import Loading from '../../components/compGeneral/Loading';
@@ -242,12 +242,12 @@ const Home = () => {
                     </a>
                 </div>
             </div>
-            <div className='mt-10'>
+            {/* <div className='mt-10'>
                 <Flyer />
-            </div>
+            </div> */}
             {/* <Loading /> */}
             <div className='my-20'>
-                <Cards1 />
+                {/* <Cards1 /> */}
                 <br className='m-4' />
                 {/* <div className='p-8 slider-container '>
                     <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Inmuebles similares a los que viste</h2>
@@ -270,7 +270,7 @@ const Home = () => {
                     </Slider>
                 </div> */}
 
-                <div className='m-4'>
+                {/* <div className='m-4'>
                     <div className=" pt-8">
                         <h4 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Integrado con inteligencia artificial</h4>
                     </div>
@@ -308,20 +308,20 @@ const Home = () => {
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> */}
             </div>
             <br className='' />
-            <div>
+            {/* <div>
                 <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Las ISO disponibles</h2>
                 <ItemSell />
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
                 <div className="my-5">
                     <h4 className="text-[45px] font-bold  text-gray-700 text-center font-ubuntu ">Te acompañamos en cada paso.</h4>
                 </div>
                 <br />
                 <Cards2 className='my-' />
-            </div>
+            </div> */}
             {/* <div>
                 <div className="">
                     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">

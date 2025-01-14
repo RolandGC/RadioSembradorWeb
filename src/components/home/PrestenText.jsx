@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 function PrestenText() {
     const textArray = [
-        'Sistemas de Gestión',
-        'Realidad Virtual',
-        'monitoreo con Drones',
-        'Cámaras de seguridad',
+        'Buena Música',
+        'Sana doctrina',
+        'Buena señal',
+        'Compartir el Evangelio',
     ];
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -36,7 +36,7 @@ function PrestenText() {
         <div>
             <div className=" z-10 font-ubuntu  md:text-[55px] sm:text-[40px] py-8 flex flex-col items-center justify-start  h-full text-white">
                 <p className='flex flex-col items-start justify-start text-[15px] font-urbanist italic no-underline'>
-                    Especialistas en:
+                    Nuestro enfoque es en:
                 </p>
                 <div
                     className={`overflow-hidden transition-all duration-1000 font-ubuntu  ${isAnimating
