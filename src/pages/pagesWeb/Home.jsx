@@ -171,20 +171,7 @@ const Home = () => {
                         <div className="flex items-center justify-center text-white sm:w-full">
                             <form action="" className="flex">
                                 <div className="font-normal flex items-center justify-center gap-x-2 bg-white font-ubuntu  rounded-sm">
-                                    {/* <button className=" hover:bg-purple1 hover:text-white text-gray-600 border border-gray-200 py-3 px-5 md:w-auto">
-                                        Alquilar
-                                    </button>
-                                    <button className=" hover:bg-purple1 hover:text-white text-gray-600 border border-gray-200 py-3 px-5 md:w-auto">
-                                        Comprar
-                                    </button>
-                                    <button className=" hover:bg-purple1 hover:text-white text-gray-600 border border-gray-200 py-3 px-5 md:w-auto">
-                                        Proyectos
-                                    </button> */}
-                                    {/* <Selector radius="sm" className='border font-ubuntu  ' color='green' >
-                                        <Selector.Tab anchor="venta" label="VENTA" />
-                                        <Selector.Tab anchor="alquiler" label="ALQUILER" />
-                                        <Selector.Tab anchor="compra" label="COMPRA" />
-                                    </Selector> */}
+                                    
                                 </div>
                             </form>
                         </div>
