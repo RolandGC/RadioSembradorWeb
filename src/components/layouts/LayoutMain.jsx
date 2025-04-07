@@ -15,6 +15,7 @@ import { SiWechat } from "react-icons/si";
 import ChatBot from '../compGeneral/ChatBot';
 import Loading from '../compGeneral/Loading';
 import { Dropdown, Button, Avatar } from '@rewind-ui/core'
+import logo2 from '/public/img/logo2.png'
 
 import useUser from '../../hooks/useUser';
 
@@ -92,7 +93,7 @@ const LayoutMain = () => {
                         <div className="flex justify-between items-center px-5 md:px-8">
                             <div className="flex items-center pl-8">
                                 <Link to={"/"} className="text-white flex justify-start items-center font-semibold text-xl h-24 pr-4">
-                                    <img src="/public/img/logo2.png" alt="" width="70" height="20" />
+                                        <img src={logo2} alt="" width="70" height="20" />
                                 </Link>
                                 <div
                                     className={`absolute ${isMenuOpen ? 'flex' : 'hidden'} h-screen z-30 bg-black bg-opacity-75 top-0 bottom-0 left-0 flex lg:flex right-0 justify-center items-center gap-5  font-bold p-3 lg:p-0 lg:static lg:bg-transparent lg:h-auto`}
