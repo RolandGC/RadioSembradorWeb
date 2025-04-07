@@ -36,6 +36,7 @@ import { Dashboard } from './pages/pagesAdmin/Dashboard'
 // layout de rutas protejidas
 import ProtectedRoutes from './components/protected/ProtectedRoutes'
 import Us from './pages/pagesWeb/Us'
+import Programming from './pages/pagesWeb/Programming'
 
 
 const router = createBrowserRouter(
@@ -64,6 +65,10 @@ const router = createBrowserRouter(
         {
           element: <Contact />,
           path: '/contacto'
+        },
+        {
+          element: <Programming />,
+          path:'/programming'
         },
         {
           element: <DetailProps />,

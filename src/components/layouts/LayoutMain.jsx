@@ -30,6 +30,16 @@ const links = [
         text: "Nosotros",
         id: 2,
     },
+    {
+        link: "/programming",
+        text: "Programación",
+        id: 2,
+    },
+    {
+        link: "/nosotros",
+        text: "Nosotros",
+        id: 2,
+    },
     // {
     //     link: "/ia/inicioia",
     //     text: "Servicios",
@@ -85,10 +95,10 @@ const LayoutMain = () => {
 
     return (
         <>
-            {
+            {/* {
                 isLoading ? (
                     <Loading />
-                ) : (
+                ) : ( */}
                     <div>
                         <div className="flex justify-between items-center px-5 md:px-8">
                             <div className="flex items-center pl-8">
@@ -247,8 +257,8 @@ const LayoutMain = () => {
                             </div>
                         </div> */}
                     </div>
-                )
-            }
+                {/* )
+            } */}
         </>
     )
 }
