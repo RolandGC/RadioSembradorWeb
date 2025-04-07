@@ -6,6 +6,7 @@ import { FaTiktok } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { FaWhatsapp } from 'react-icons/fa';
 import { IoIosMail } from "react-icons/io"
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { MdLogin } from "react-icons/md"
@@ -33,12 +34,7 @@ const links = [
     {
         link: "/programming",
         text: "Programación",
-        id: 2,
-    },
-    {
-        link: "/nosotros",
-        text: "Nosotros",
-        id: 2,
+        id: 3,
     },
     // {
     //     link: "/ia/inicioia",
@@ -47,7 +43,7 @@ const links = [
     // },
     {
         link: "/blog",
-        text: "Blog",
+        text: "Donar",
         id: 4,
     },
     {
@@ -99,42 +95,42 @@ const LayoutMain = () => {
                 isLoading ? (
                     <Loading />
                 ) : ( */}
-                    <div>
-                        <div className="flex justify-between items-center px-5 md:px-8">
-                            <div className="flex items-center pl-8">
-                                <Link to={"/"} className="text-white flex justify-start items-center font-semibold text-xl h-24 pr-4">
-                                        <img src={logo2} alt="" width="70" height="20" />
-                                </Link>
-                                <div
-                                    className={`absolute ${isMenuOpen ? 'flex' : 'hidden'} h-screen z-30 bg-black bg-opacity-75 top-0 bottom-0 left-0 flex lg:flex right-0 justify-center items-center gap-5  font-bold p-3 lg:p-0 lg:static lg:bg-transparent lg:h-auto`}
-                                >
-                                    {
-                                        isMenuOpen ? (
-                                            <button
-                                                onClick={() => setIsMenuOpen(false)} className='bg-red-600 absolute top-5 right-5 rounded-full transition-colors duration-300 hover:bg-red-800  p-3'
-                                            >
-                                                <AiOutlineClose className='text-white text-2xl font-bold' />
-                                            </button>
-                                        ) : null
-                                    }
-                                    <div className='flex flex-col gap-10 lg:gap-5 lg:flex-row'>
-                                        {links.map(link => (
-                                            <Link
-                                                to={link.link}
-                                                onClick={() => setIsMenuOpen(false)}
-                                                className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition-opacity duration-300 hover:text-purple1 hover:opacity-75 font-ubuntu "
-                                                key={link.id}
-                                            >
-                                                {link.text}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                                <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                                    {isMenuOpen ? <AiOutlineClose className="text-[35px] text-gray-500" /> : <AiOutlineMenu className="text-[35px] text-gray-500" />}
-                                </button>
+            <div>
+                <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md px-5 md:px-8">
+                    <div className="flex items-center pl-8">
+                        <Link to={"/"} className="text-white flex justify-start items-center font-semibold text-xl h-24 pr-4">
+                            <img src={logo2} alt="" width="70" height="20" />
+                        </Link>
+                        <div
+                            className={`absolute ${isMenuOpen ? 'flex' : 'hidden'} h-screen z-30 bg-black bg-opacity-75 top-0 bottom-0 left-0 flex lg:flex right-0 justify-center items-center gap-5  font-bold p-3 lg:p-0 lg:static lg:bg-transparent lg:h-auto`}
+                        >
+                            {
+                                isMenuOpen ? (
+                                    <button
+                                        onClick={() => setIsMenuOpen(false)} className='bg-red-600 absolute top-5 right-5 rounded-full transition-colors duration-300 hover:bg-red-800  p-3'
+                                    >
+                                        <AiOutlineClose className='text-white text-2xl font-bold' />
+                                    </button>
+                                ) : null
+                            }
+                            <div className='flex flex-col gap-10 lg:gap-5 lg:flex-row'>
+                                {links.map(link => (
+                                    <Link
+                                        to={link.link}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition-opacity duration-300 hover:text-purple1 hover:opacity-75 font-ubuntu "
+                                        key={link.id}
+                                    >
+                                        {link.text}
+                                    </Link>
+                                ))}
                             </div>
-                            {/* <div className='flex flex-col md:flex-row'>
+                        </div>
+                        <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                            {isMenuOpen ? <AiOutlineClose className="text-[35px] text-gray-500" /> : <AiOutlineMenu className="text-[35px] text-gray-500" />}
+                        </button>
+                    </div>
+                    {/* <div className='flex flex-col md:flex-row'>
                                 <Link className="bg-white hover:bg-purple1 hover:text-white m-2 p-2 items-center flex text-gray-700 border border-purple1 justify-center font-urbanist" to="/usuario/publicar">
                                     <FaPlus />
                                     Registrarse
@@ -175,79 +171,60 @@ const LayoutMain = () => {
                                     )
                                 }
                             </div> */}
+                </div>
+
+                <main className="bg-gray-200 pt-24">
+                    <Outlet />
+                </main>
+
+                <footer className="bg-black/50 backdrop-blur-sm  py-8  bg-gradient-to-br from-blue-900 to-purple1 text-white">
+                    <div className="max-w-6xl mx-auto px-4">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                            <div>
+                                <div className="flex items-center space-x-2 mb-4">
+                                    {/* <Radio className="w-6 h-6 text-yellow-400" /> */}
+                                    <h3 className="text-xl font-bold">Radio Sembrador</h3>
+                                </div>
+                                <p className="text-gray-400 text-sm"> Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite Desde Tacna – Peru.</p>
+                            </div>
+                            <div>
+                                <h4 className="font-bold mb-4">Enlaces</h4>
+                                <ul className="space-y-2 text-gray-400">
+                                    <li><a href="#" className="hover:text-yellow-400 transition">Inicio</a></li>
+                                    <li><a href="#" className="hover:text-yellow-400 transition">Programas</a></li>
+                                    <li><a href="#" className="hover:text-yellow-400 transition">Noticias</a></li>
+                                    <li><a href="#" className="hover:text-yellow-400 transition">Eventos</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-bold mb-4">Contacto</h4>
+                                <ul className="space-y-2 text-gray-400">
+                                    <li>radiosembrador.info@gmail.com</li>
+                                    <li>(052) 578721</li>
+                                    <li>GAL, Tacna - Perú</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-bold mb-4">Síguenos</h4>
+                                <div className="flex space-x-4">
+                                    <a href="https://www.facebook.com/radiosembrador.pe" target="_blank" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://wa.me/51984715530" target="_blank" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                                        <FaWhatsapp className="text-2xl" />
+                                    </a>
+
+                                </div>
+                            </div>
                         </div>
-
-                        <main className='bg-gray-200 '>
-                            <Outlet />
-                        </main>
-
-                        <footer className=' bg-white'>
-                            <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-8 p-14'>
-                                <div className='flex'>
-                                    <div className='flex-1 font-josefin '>
-                                        <p className='text-gray-700 font-ubuntu  font-bold mb-2'>Radio Sembrador</p>
-                                            <span className='text-gray-400 font-urbanist'> Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite Desde Tacna – Peru</span>
-                                    </div>
-                                </div>
-                                <div className='bg-white text-gray-400 text-sm flex-1 font-urbanist'>
-                                    <p className='text-gray-700 font-ubuntu  font-bold text-base'>Accesos directos</p>
-                                    <nav>
-                                        <p className='p-2 hover:text-purple1'>Inicio</p>
-                                        <p className='p-2 hover:text-purple1'>Buscar propiedades</p>
-                                        <p className='p-2 hover:text-purple1'>Asesores</p>
-                                        <p className='p-2 hover:text-purple1'>Contactos</p>
-                                        <p className='p-2 hover:text-purple1'>Nosotros</p>
-                                        <p className='p-2 hover:text-purple1'>Politica de privacidad</p>
-                                    </nav>
-                                </div>
-                                <div className='flex-1 bg-white font-urbanist'>
-                                    <p className='text-gray-700 font-ubuntu  font-bold'>Contáctanos</p>
-                                    <ul>
-                                        <li className='flex items-center mb-2'>
-                                            <div className='m-3'>
-                                                <BiSolidPhoneCall className='text-purple1 text-2xl' />
-                                            </div>
-                                            <div className='text-gray-500 text-sm'>
-                                                <h5>TELEFONO</h5>
-                                                (511) 4444 555
-                                            </div>
-                                        </li>
-                                        <li className='flex items-center'>
-                                            <div className='bg-white m-3'>
-                                                <IoIosMail className='text-purple1 text-2xl' />
-                                            </div>
-                                            <div className='flex flex-col text-xs'>
-                                                <h5 className='text-gray-500 whitespace-normal'>EMAILS</h5>
-                                                <a className='text-blue-500' href="info@remax.net.pe">radiosembrador@email.com</a>
-                                                    <a className='text-blue-500' href="">radiosembrador.pe</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div className='text-center inset-x-0 flex justify-center bg-white p-4'>
-                                        <ul className='justify-center flex text-purple1 text-3xl bg-white p-4 shadow-md shadow-purple1  pl-10 pr-10 '>
-                                            <li>
-                                                <FaFacebookF className="ml-1 " />
-                                            </li>
-                                            <li>
-                                                <FaYoutube className="ml-8" />
-                                            </li>
-                                            <li>
-                                                <FaTiktok className="ml-8" />
-                                            </li>
-                                            <li>
-                                                <FaInstagram className="ml-8" />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="text-xs mx-auto flex justify-center text-white bg-purple1 p-5">
-                                <nav>
-                                    <span>© Copyright RolandGuti 2024 - Términos y Condiciones de Uso Política de privacidad.</span>
-                                </nav>
-                            </div>
-                        </footer>
-                        {/* <div className='fixed bottom-3 right-3 z-50' >
+                        <div className="border-t border-white/10 mt-8 pt-6 text-center text-white text-sm">
+                            <p>© Copyright Radio Sembrador 2025.</p>
+                        </div>
+                    </div>
+                </footer>
+                {/* <div className='fixed bottom-3 right-3 z-50' >
                             <button className='bg-purple1 p-5 rounded-full text-white text-4xl animate-pulse' onClick={toggleChatbot}>
                                 <SiWechat />
                             </button>
@@ -256,8 +233,8 @@ const LayoutMain = () => {
                                 <ChatBot />
                             </div>
                         </div> */}
-                    </div>
-                {/* )
+            </div>
+            {/* )
             } */}
         </>
     )

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { TbDeviceIpadSearch } from "react-icons/tb"
 import { SlRocket } from "react-icons/sl"
 import { FaHouseUser } from "react-icons/fa"
-import isoImage from '/public/img/radioo.jpg';
+import consola from '/public/img/consola.webp';
 import { GiBullseye } from "react-icons/gi";
 
 const Us = () => {
@@ -34,7 +34,7 @@ const Us = () => {
                 <div>
                     <section
                         className="relative bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url(${isoImage})` }}                    >
+                        style={{ backgroundImage: `url(${consola})` }}                    >
                         <div
                             className="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
                         ></div>

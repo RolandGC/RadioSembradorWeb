@@ -144,16 +144,26 @@ const Home = () => {
     };
 
     return (
-
-        <main className='bg-gray-100'>
-            <div className="relative w-full h-160 overflow-hidden bg-cover bg-center">
+        <>
+            <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 z-0">
                 <video
-                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    className="fixed top-0 left-0 w-full h-full object-cover z-0"
                     src={bg}
                     autoPlay
                     loop
                     muted
                 />
+           </div>
+
+            <main className="relative z-10 ">
+            <div className=" ">
+                {/* <video
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    src={bg}
+                    autoPlay
+                    loop
+                    muted
+                /> */}
 
                 <div className="relative z-10 items-center justify-center p-2 md:p-4 h-160 w-full  bg-black bg-opacity-35">
                     <h3 className="text-[40px] font-bold  text-white  text-center p-4 pb-3 font-ubuntu  "><PrestenText1 /></h3>
@@ -228,28 +238,29 @@ const Home = () => {
                 </div>
             </div> */}
 
-            <div>
-                <div className='mt-10'>
-                    <Cards3 />
-                </div>
-            </div>
-            <div>
-                <div className='flex justify-center mt-10'>
-                    <a href="/ia/inicioia">
-                        <button className='inset-0 flex justify-center items-center border border-gray-400 p-2 font-urbanist hover:bg-gray-400 hover:text-white'>
-                            Nosotros
-                        </button>
-                    </a>
-                </div>
-            </div>
-            {/* <div className='mt-10'>
+                <div className='bg-gray-100'>
+                    <div className='bg-gray-100'>
+                        <div className='mt-10'>
+                            <Cards3 />
+                        </div>
+                    </div>
+                    <div>
+                        <div className='flex justify-center mt-10'>
+                            <a href="/ia/inicioia">
+                                <button className='inset-0 flex justify-center items-center border border-gray-400 p-2 font-urbanist hover:bg-gray-400 hover:text-white'>
+                                    Nosotros
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    {/* <div className='mt-10'>
                 <Flyer />
             </div> */}
-            {/* <Loading /> */}
-            <div className='my-20'>
-                {/* <Cards1 /> */}
-                <br className='m-4' />
-                {/* <div className='p-8 slider-container '>
+                    {/* <Loading /> */}
+                    <div className='my-20'>
+                        {/* <Cards1 /> */}
+                        <br className='m-4' />
+                        {/* <div className='p-8 slider-container '>
                     <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Inmuebles similares a los que viste</h2>
                     <Slider {...settings}>
                         <div>
@@ -270,7 +281,7 @@ const Home = () => {
                     </Slider>
                 </div> */}
 
-                {/* <div className='m-4'>
+                        {/* <div className='m-4'>
                     <div className=" pt-8">
                         <h4 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Integrado con inteligencia artificial</h4>
                     </div>
@@ -309,20 +320,9 @@ const Home = () => {
                         </ul>
                     </div>
                 </div> */}
-            </div>
-            <br className='' />
-            {/* <div>
-                <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Las ISO disponibles</h2>
-                <ItemSell />
-            </div> */}
-            {/* <div>
-                <div className="my-5">
-                    <h4 className="text-[45px] font-bold  text-gray-700 text-center font-ubuntu ">Te acompañamos en cada paso.</h4>
-                </div>
-                <br />
-                <Cards2 className='my-' />
-            </div> */}
-            {/* <div>
+                    </div>
+                    <br className='' />
+                    {/* <div>
                 <div className="">
                     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                         <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Más propiedades</h2>
@@ -343,59 +343,24 @@ const Home = () => {
                                 </form>
                             </div>
                         </div>
-                        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                            <div className="max-w-2xl ">
-                                <h4 className="text-sm font-bold  text-gray-900 sm:text-2xl text-center font-ubuntu ">¿Conoces nuestras opciones de desarrollos?</h4>
-                                <p className='font-urbanist'>Puedes verlos según la etapa de construcción que más se ajusta a tu búsqueda.</p>
-                            </div>
-                            {products.map((product) => (
-                                <div key={product.id} className="group relative">
-                                    <div className=''>
-                                        <a href="">
-                                            <div className="w-full overflow-hidden rounded-t-lg bg-gray-200 lg:h-80 sm:h-60">
-                                                <img
-                                                    src={product.imageSrc}
-                                                    alt={product.imageAlt}
-                                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                                />
-                                                <FaRegHeart className="bg-white absolute top-5 right-2 py-1 px-3 rounded-full text-black text-[40px]" />
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div className='bg-white p-2'>
-                                        <div className="mt-4 flex justify-between">
-                                            <div className='ml-3'>
-                                                <p className="text-xs font-medium text-gray-700 mb-4">{product.price}</p>
-                                                <h3 className="text-xs text-gray-600 mb-5 flex">
-                                                    <a href={product.href}>
-                                                        <span aria-hidden="true" className="absolute inset-0 flex-initial" />
-                                                        <FaLocationDot className="mr-1 mt-1" />{product.locate}
-                                                    </a>
-                                                </h3>
-                                                <p className="text-[10px] text-gray-400">{product.ruc}</p>
-                                                <p className="text-[11px] text-gray-400">{product.society}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                       
                     </div>
                 </div>
             </div> */}
-            <div className='flex justify-center items-center p-4'>
-                <h5 className='mr-1 text-xl text-gray-600 font-ubuntu '>Busca entre más de 17,976 Propiedades</h5>
-                <button className='bg-purple1 p-3 text-white text-sm'>
-                    <a href="/buscar">VER MÁS</a>
-                </button>
-            </div>
+                    <div className='flex justify-center items-center p-4'>
+                        <h5 className='mr-1 text-xl text-gray-600 font-ubuntu '>Busca entre más de 17,976 Propiedades</h5>
+                        <button className='bg-purple1 p-3 text-white text-sm'>
+                            <a href="/buscar">VER MÁS</a>
+                        </button>
+                    </div>
 
-            <div className="">
-                <div className="" >
-                </div>
-            </div>
+                    <div className="">
+                        <div className="" >
+                        </div>
+                    </div>
+           </div>
         </main>
+        </>
     )
 }
 
