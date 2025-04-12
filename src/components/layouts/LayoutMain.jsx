@@ -91,9 +91,9 @@ const LayoutMain = () => {
         <>
             <div>
                 <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md px-5 md:px-8 bg-[#66524c]">
-                    <div className="flex items-center justify-center lg:justify-start pl-0 lg:pl-8 w-full h-20">
-                        <Link to={"/"} className="text-white flex justify-start items-center font-semibold text-xl h-20 pr-16">
-                            <img src={logo2} alt="" width="115" height="50" />
+                    <div className="flex items-center justify-center lg:justify-start pl-0 lg:pl-8 w-full h-[70px]">
+                        <Link to={"/"} className="text-white flex justify-start items-center font-semibold text-xl h-[60px] pr-16">
+                            <img src={logo2} alt="" width="100" height="[40px]" />
                         </Link>
                         <div
                             className={`absolute ${isMenuOpen ? 'flex' : 'hidden'} h-screen z-30 bg-black bg-opacity-75 top-0 bottom-0 left-0 flex lg:flex right-0 justify-center items-center gap-5  font-bold p-3 lg:p-0 lg:static lg:bg-transparent lg:h-auto`}
