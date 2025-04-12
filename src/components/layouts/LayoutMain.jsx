@@ -89,12 +89,20 @@ const LayoutMain = () => {
 
     return (
         <>
-            <div>
-                <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md px-5 md:px-8 bg-[#66524c]">
-                    <div className="flex items-center justify-center lg:justify-start pl-0 lg:pl-8 w-full h-[70px]">
-                        <Link to={"/"} className="text-white flex justify-start items-center font-semibold text-xl h-[60px] pr-16">
-                            <img src={logo2} alt="" width="100" height="[40px]" />
-                        </Link>
+                <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md px-5 md:px-0 bg-[#66524c]">
+                    <div className="flex items-center justify-center lg:justify-start pl-0  w-full h-[70px]">
+                    <Link
+                        to="/"
+                        className="text-white flex justify-start items-center lg:pl-8 font-semibold text-xl h-[70px] pr-16 group hover:bg-gray-200"
+                    >
+                        <img
+                            src={logo2}
+                            alt="Logo"
+                            width="100"
+                            height="40"
+                            className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+                        />
+                    </Link>
                         <div
                             className={`absolute ${isMenuOpen ? 'flex' : 'hidden'} h-screen z-30 bg-black bg-opacity-75 top-0 bottom-0 left-0 flex lg:flex right-0 justify-center items-center gap-5  font-bold p-3 lg:p-0 lg:static lg:bg-transparent lg:h-auto`}
                         >
@@ -112,11 +120,13 @@ const LayoutMain = () => {
                                     <Link
                                         to={link.link}
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition-opacity duration-300 hover:text-greenSky hover:opacity-75 font-ubuntu "
+                                        className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] font-ubuntu transition duration-300 ease-in-out transform hover:scale-110 hover:text-greenSky relative group"
                                         key={link.id}
                                     >
-                                        {link.text}
+                                        <span className="relative z-10">{link.text}</span>
+                                        <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-greenSky transition-all duration-300 group-hover:w-full"></span>
                                     </Link>
+
                                 ))}
                             </div>
                         </div>
@@ -188,7 +198,6 @@ const LayoutMain = () => {
                         <DonationInfo />
                     </div>
                 </div>
-            </div>
         </>
     )
 }
