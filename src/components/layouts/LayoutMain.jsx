@@ -13,12 +13,15 @@ import { MdLogin } from "react-icons/md"
 import { BiSolidChat } from "react-icons/bi"
 import { FaPlus } from "react-icons/fa6";
 import { SiWechat } from "react-icons/si";
+import { FaDonate } from "react-icons/fa";
 import ChatBot from '../compGeneral/ChatBot';
 import Loading from '../compGeneral/Loading';
 import { Dropdown, Button, Avatar } from '@rewind-ui/core'
 import logo2 from '/public/img/logo2.png'
 
 import useUser from '../../hooks/useUser';
+import RadioPlayer from '../home/RadioPlayer';
+import DonationInfo from '../home/DonationInfo';
 
 const links = [
     {
@@ -27,31 +30,26 @@ const links = [
         id: 1,
     },
     {
+        link: "/programming",
+        text: "Programación",
+        id: 3,
+    },
+    {
         link: "/nosotros",
         text: "Nosotros",
         id: 2,
     },
     {
-        link: "/programming",
-        text: "Programación",
-        id: 3,
+        link: "/contacto",
+        text: "Contacto",
+        id: 5,
     },
-    // {
-    //     link: "/ia/inicioia",
-    //     text: "Servicios",
-    //     id: 3,
-    // },
     {
         link: "/blog",
         text: "Donar",
         id: 4,
     },
-    {
-        link: "/contacto",
-        text: "contacto",
-        id: 5,
-    },
-
+    
 ];
 
 const LayoutMain = () => {
@@ -68,9 +66,9 @@ const LayoutMain = () => {
         setIsLgScreen(window.innerWidth >= 1024);
     };
 
-    setTimeout(() => {
-        setIsLoading(false)
-    }, 300);
+    // setTimeout(() => {
+    //     setIsLoading(false)
+    // }, 300);
 
     window.addEventListener('resize', handleResize);
 
@@ -91,15 +89,11 @@ const LayoutMain = () => {
 
     return (
         <>
-            {/* {
-                isLoading ? (
-                    <Loading />
-                ) : ( */}
             <div>
-                <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md px-5 md:px-8">
-                    <div className="flex items-center pl-8">
-                        <Link to={"/"} className="text-white flex justify-start items-center font-semibold text-xl h-24 pr-4">
-                            <img src={logo2} alt="" width="70" height="20" />
+                <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md px-5 md:px-8 bg-[#66524c]">
+                    <div className="flex items-center justify-center lg:justify-start pl-0 lg:pl-8 w-full h-20">
+                        <Link to={"/"} className="text-white flex justify-start items-center font-semibold text-xl h-20 pr-16">
+                            <img src={logo2} alt="" width="115" height="50" />
                         </Link>
                         <div
                             className={`absolute ${isMenuOpen ? 'flex' : 'hidden'} h-screen z-30 bg-black bg-opacity-75 top-0 bottom-0 left-0 flex lg:flex right-0 justify-center items-center gap-5  font-bold p-3 lg:p-0 lg:static lg:bg-transparent lg:h-auto`}
@@ -113,12 +107,12 @@ const LayoutMain = () => {
                                     </button>
                                 ) : null
                             }
-                            <div className='flex flex-col gap-10 lg:gap-5 lg:flex-row'>
+                            <div className='flex flex-col gap-10 lg:gap-5 lg:flex-row '>
                                 {links.map(link => (
                                     <Link
                                         to={link.link}
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition-opacity duration-300 hover:text-purple1 hover:opacity-75 font-ubuntu "
+                                        className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition-opacity duration-300 hover:text-greenSky hover:opacity-75 font-ubuntu "
                                         key={link.id}
                                     >
                                         {link.text}
@@ -130,54 +124,14 @@ const LayoutMain = () => {
                             {isMenuOpen ? <AiOutlineClose className="text-[35px] text-gray-500" /> : <AiOutlineMenu className="text-[35px] text-gray-500" />}
                         </button>
                     </div>
-                    {/* <div className='flex flex-col md:flex-row'>
-                                <Link className="bg-white hover:bg-purple1 hover:text-white m-2 p-2 items-center flex text-gray-700 border border-purple1 justify-center font-urbanist" to="/usuario/publicar">
-                                    <FaPlus />
-                                    Registrarse
-                                </Link>
-                                {
-                                    isAuth ? (
-                                        <Dropdown itemColor="green" radius="none">
-                                            <Dropdown.Trigger itemColor="blue">
-                                                <Button color='green' radius="none" className='m-2 p-2 h-[42px] w-[90.27px] font-urbanist text-[17px]'>
-                                                    Usuario
-                                                </Button>
-
-                                            </Dropdown.Trigger>
-                                            <Dropdown.Content className='font-urbanist'>
-                                                <Dropdown.Item>
-                                                    <Link to="/usuario/cuenta">
-                                                        Mi perfil
-                                                    </Link>
-                                                </Dropdown.Item>
-                                                <Dropdown.Item>
-                                                    Messages
-                                                </Dropdown.Item>
-                                                <Dropdown.Divider />
-                                                <Dropdown.Item onClick={signOff}>
-                                                    Cerrar sesión
-                                                </Dropdown.Item>
-                                            </Dropdown.Content>
-                                        </Dropdown>
-                                    ) : (
-                                        <Link
-                                            to="/login"
-                                            className="bg-purple1 hover:bg-gray-400 m-2 p-2 items-center flex text-white justify-center z-60"
-                                        >
-                                            <MdLogin className="text-2xl" />
-                                            <p className="text-sm font-urbanist">Iniciar Sesión</p>
-
-                                        </Link>
-                                    )
-                                }
-                            </div> */}
                 </div>
 
-                <main className="bg-gray-200 pt-24">
+                <main className="bg-gray-200 pt-24 ">
+                    <RadioPlayer />
                     <Outlet />
                 </main>
 
-                <footer className="bg-black/50 backdrop-blur-sm  py-8  bg-gradient-to-br from-blue-900 to-purple1 text-white">
+                <footer className="bg-black/50 backdrop-blur-sm  py-8  bg-gradient-to-br from-blue-900 to-greenSky text-white">
                     <div className="max-w-6xl mx-auto px-4">
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                             <div>
@@ -224,18 +178,17 @@ const LayoutMain = () => {
                         </div>
                     </div>
                 </footer>
-                {/* <div className='fixed bottom-3 right-3 z-50' >
-                            <button className='bg-purple1 p-5 rounded-full text-white text-4xl animate-pulse' onClick={toggleChatbot}>
-                                <SiWechat />
-                            </button>
+                <div className='fixed bottom-3 right-3 z-50' >
+                    <button className='bg-greenSky p-5 rounded-full text-white text-4xl animate-pulse' onClick={toggleChatbot}>
+                        <FaDonate />
+                    </button>
 
-                            <div className={`bg-gray-200 right-3  transition-transform duration-300 absolute top-[-410px] p-0 text-gray-600 shadow-lg ${chatBot ? 'translate-x-0' : 'translate-x-[500px]'}`}>
-                                <ChatBot />
-                            </div>
-                        </div> */}
+                    <div className={`bg-gray-200 right-3  transition-transform duration-300 absolute top-[-410px] p-0 text-gray-600 shadow-lg ${chatBot ? 'translate-x-0' : 'translate-x-[500px]'}`}>
+                        {/* <ChatBot /> */}
+                        <DonationInfo />
+                    </div>
+                </div>
             </div>
-            {/* )
-            } */}
         </>
     )
 }

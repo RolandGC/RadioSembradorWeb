@@ -13,10 +13,8 @@ export default {
                 'xs': '450px', // Añade tu media query personalizada aquí
             },
             colors: {
-                green1: '#1B7895',
                 blue2: '#174966',
-                blue3: '#24BFCF',
-                purple1: '#00ac9e',
+                greenSky: '#00ac9e',
             },
             spacing: {
                 '200': '50rem',

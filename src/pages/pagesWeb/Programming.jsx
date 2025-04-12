@@ -57,7 +57,7 @@ export default function Programming() {
     return (
         <div className="max-w-6xl mx-auto p-4">
             <div className="text-center mb-8">
-                <h1 className="text-4xl font-bold text-purple1">PROGRAMACIÓN</h1>
+                <h1 className="text-4xl font-bold text-greenSky">PROGRAMACIÓN</h1>
                 <h2 className="text-xl text-gray-600">Radio Sembrador</h2>
             </div>
 
@@ -68,7 +68,7 @@ export default function Programming() {
                         key={index}
                         onClick={() => setDiaSeleccionado(index)}
                         className={`flex-1 text-center py-3 px-4 cursor-pointer transition-colors ${diaSeleccionado === index
-                                ? 'bg-purple1 text-white relative'
+                                ? 'bg-greenSky text-white relative'
                                 : 'bg-gray-700 text-white'
                             }`}
                     >
@@ -76,7 +76,7 @@ export default function Programming() {
                         <div className="text-sm">{item.fecha}</div>
                         {diaSeleccionado === index && (
                             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
-                                <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-t-purple1 border-l-transparent border-r-transparent"></div>
+                                <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-t-greenSky border-l-transparent border-r-transparent"></div>
                             </div>
                         )}
                     </div>

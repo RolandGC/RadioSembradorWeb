@@ -145,52 +145,42 @@ const Home = () => {
 
     return (
         <>
-            <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 z-0">
-                <video
-                    className="fixed top-0 left-0 w-full h-full object-cover z-0"
-                    src={bg}
-                    autoPlay
-                    loop
-                    muted
-                />
-           </div>
-
             <main className="relative z-10 ">
-            <div className=" ">
-                {/* <video
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                    src={bg}
-                    autoPlay
-                    loop
-                    muted
-                /> */}
+                <div className="relative w-full h-160 overflow-hidden bg-cover bg-center">
+                    <video
+                        className="absolute top-0 left-0 w-full h-full object-cover"
+                        src={bg}
+                        autoPlay
+                        loop
+                        muted
+                    />
 
-                <div className="relative z-10 items-center justify-center p-2 md:p-4 h-160 w-full  bg-black bg-opacity-35">
-                    <h3 className="text-[40px] font-bold  text-white  text-center p-4 pb-3 font-ubuntu  "><PrestenText1 /></h3>
-                    <div className="m-14">
-                        <div className="flex items-center justify-center text-white sm:w-full">
-                            <form action="" className="flex">
-                                <div className="font-normal flex items-center justify-center gap-x-2 bg-white font-ubuntu  rounded-sm">
-                                    
-                                </div>
-                            </form>
+                    <div className="relative z-10 items-center justify-center p-2 md:p-4 h-160 w-full  bg-black bg-opacity-35">
+                        <h3 className="text-[40px] font-bold  text-white  text-center p-4 pb-3 font-ubuntu  "><PrestenText1 /></h3>
+                        <div className="m-14">
+                            <div className="flex items-center justify-center text-white sm:w-full">
+                                <form action="" className="flex">
+                                    <div className="font-normal flex items-center justify-center gap-x-2 bg-white font-ubuntu  rounded-sm">
+
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
 
+                        <div className='m-8 flex-1'>
+                            <div className='flex justify-center'>
+                                <h6 className="text-sm text-white font-urbanist font-bold">Ver más</h6>
+                            </div>
+                            <div className="flex justify-center items-center animate-ping m-4">
+                                <MdExpandCircleDown className="text-white w-full h-8" />
+                            </div>
+                        </div>
+                        <br />
                     </div>
-
-                    <div className='m-8 flex-1'>
-                        <div className='flex justify-center'>
-                            <h6 className="text-sm text-white font-urbanist font-bold">Ver más</h6>
-                        </div>
-                        <div className="flex justify-center items-center animate-ping m-4">
-                            <MdExpandCircleDown className="text-white w-full h-8" />
-                        </div>
-                    </div>
-                    <br />
                 </div>
-            </div>
 
-            {/* <div className='flex flex-col md:flex-row bg-white rounded-sm'>
+                {/* <div className='flex flex-col md:flex-row bg-white rounded-sm'>
                 <div className='p-4 w-full sm:w-full md:w-1/3'>
                     <select
                         id="country"
@@ -218,7 +208,7 @@ const Home = () => {
                 <div className="flex justify-center items-center p-4 space-x-4 font-urbanist">
                     <button
                         type="button"
-                        className="px-5 py-3 bg-purple1 text-white hover:bg-gray-500 focus:outline-none items-center flex text-mx rounded-sm"
+                        className="px-5 py-3 bg-greenSky text-white hover:bg-gray-500 focus:outline-none items-center flex text-mx rounded-sm"
                     >
                         <FaSearch className='flex mr-1  selection: ' /> Buscar
                     </button>
@@ -279,7 +269,7 @@ const Home = () => {
                                     <div >
                                         <p className="text-sm leading-6 text-gray-700 font-ubuntu ">Navega por nuestra página web inteligente, donde la IA anticipa tus necesidades.</p>
                                     </div>
-                                    <a href="/ia/inicioia" className='rounded-full px-3 py-[13px] bg-purple1'>
+                                    <a href="/ia/inicioia" className='rounded-full px-3 py-[13px] bg-greenSky'>
                                         <FaArrowRight className='h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 rounded-full m-3' />
                                     </a>
                                 </div>
@@ -289,7 +279,7 @@ const Home = () => {
                                     <div >
                                         <p className="text-sm font-semibold leading-6 text-gray-700 font-ubuntu ">Experimenta la diferencia con nuestra página web, potenciada por inteligencia artificial.</p>
                                     </div>
-                                    <a href="/ia/inicioia" className='rounded-full px-3 py-[13px] bg-purple1'>
+                                    <a href="/ia/inicioia" className='rounded-full px-3 py-[13px] bg-greenSky'>
                                         <FaArrowRight className=' h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 rounded-full m-3' />
                                     </a>
                                 </div>
@@ -299,7 +289,7 @@ const Home = () => {
                                     <div >
                                         <p className="text-sm font-semibold leading-6 text-gray-700 font-ubuntu ">Explora un nuevo nivel de interactividad con nuestra página web impulsada por IA.</p>
                                     </div>
-                                    <a href="/ia/inicioia" className='rounded-full px-3 py-[13px] bg-purple1'>
+                                    <a href="/ia/inicioia" className='rounded-full px-3 py-[13px] bg-greenSky'>
                                         <FaArrowRight className='h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 rounded-full m-3' />
                                     </a>
                                 </div>
@@ -317,13 +307,13 @@ const Home = () => {
                             <div className=" inset-0 flex items-center justify-end text-white ">
                                 <form action="" className="flex">
                                     <div className="font-urbanist flex items-center justify-center rounded-t bg-white m-2">
-                                        <button className=" border border-gray-600 hover:bg-purple1 hover:text-white text-gray-600  py-2 px-4 ">
+                                        <button className=" border border-gray-600 hover:bg-greenSky hover:text-white text-gray-600  py-2 px-4 ">
                                             En construcción
                                         </button>
-                                        <button className="border border-gray-600 hover:bg-purple1 hover:text-white text-gray-600  py-2 px-4  ml-2">
+                                        <button className="border border-gray-600 hover:bg-greenSky hover:text-white text-gray-600  py-2 px-4  ml-2">
                                             En planos
                                         </button>
-                                        <button className="border border-gray-600 hover:bg-purple1 hover:text-white text-gray-600 py-2 px-4 ml-2">
+                                        <button className="border border-gray-600 hover:bg-greenSky hover:text-white text-gray-600 py-2 px-4 ml-2">
                                             Entrega inmediata
                                         </button>
                                     </div>
@@ -336,7 +326,7 @@ const Home = () => {
             </div> */}
                     <div className='flex justify-center items-center p-4'>
                         <h5 className='mr-1 text-xl text-gray-600 font-ubuntu '>Busca entre más de 17,976 Propiedades</h5>
-                        <button className='bg-purple1 p-3 text-white text-sm'>
+                        <button className='bg-greenSky p-3 text-white text-sm'>
                             <a href="/buscar">VER MÁS</a>
                         </button>
                     </div>
@@ -345,8 +335,8 @@ const Home = () => {
                         <div className="" >
                         </div>
                     </div>
-           </div>
-        </main>
+                </div>
+            </main>
         </>
     )
 }

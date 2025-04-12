@@ -24,7 +24,7 @@ function ItemSell() {
             imageAlt: "Front of men's Basic Tee in black.",
             title: 'Sistema de Gestión basada en la norma ',
             iso: '45001 - 2018',
-            buttonColor: 'bg-purple1'
+            buttonColor: 'bg-greenSky'
         },
         {
             id: 3,
@@ -51,7 +51,7 @@ function ItemSell() {
             imageAlt: "Front of men's Basic Tee in black.",
             title: 'Sistema de Gestión basada en la norma ',
             iso: '19601 - 2017',
-            buttonColor: 'bg-purple1'
+            buttonColor: 'bg-greenSky'
         },
         {
             id: 6,
@@ -96,7 +96,7 @@ function ItemSell() {
             imageAlt: "Front of men's Basic Tee in black.",
             title: 'Sistema de Gestión basada en la norma ',
             iso: '22001 - 2018',
-            buttonColor: 'bg-purple1'
+            buttonColor: 'bg-greenSky'
         },
         {
             id: 11,
@@ -123,7 +123,7 @@ function ItemSell() {
             imageAlt: "Front of men's Basic Tee in black.",
             title: 'Sistema de Gestión basada en la norma ',
             iso: '28001 - 2018',
-            buttonColor: 'bg-purple1'
+            buttonColor: 'bg-greenSky'
         },
         {
             id: 14,
@@ -168,7 +168,7 @@ function ItemSell() {
             imageAlt: "Front of men's Basic Tee in black.",
             title: 'Sistema de Gestión basada en la norma ',
             iso: '15189 - 2023',
-            buttonColor: 'bg-purple1'
+            buttonColor: 'bg-greenSky'
         },
         {
             id: 19,
@@ -195,7 +195,7 @@ function ItemSell() {
             imageAlt: "Front of men's Basic Tee in black.",
             title: 'Sistema de Gestión basada en la norma ',
             iso: '17025 - 2017',
-            buttonColor: 'bg-purple1'
+            buttonColor: 'bg-greenSky'
         },
         {
             id: 22,
