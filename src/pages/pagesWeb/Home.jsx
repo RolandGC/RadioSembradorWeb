@@ -324,12 +324,6 @@ const Home = () => {
                     </div>
                 </div>
             </div> */}
-                    <div className='flex justify-center items-center p-4'>
-                        <h5 className='mr-1 text-xl text-gray-600 font-ubuntu '>Busca entre más de 17,976 Propiedades</h5>
-                        <button className='bg-greenSky p-3 text-white text-sm'>
-                            <a href="/buscar">VER MÁS</a>
-                        </button>
-                    </div>
 
                     <div className="">
                         <div className="" >

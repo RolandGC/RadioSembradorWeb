@@ -1,78 +1,99 @@
-import React, { useState, useEffect } from 'react';
-//import { Minimize2 } from 'lucide-react';
-import Logo1 from "/public/img/Logo1.png";
+import React, { useState, useRef, useEffect } from 'react';
+import Logo1 from "/public/img/logoVertical.png";
+import { FiMinimize2, FiMaximize2 } from "react-icons/fi";
 
 const RadioPlayer = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [volume, setVolume] = useState(80);
-    const [isMuted, setIsMuted] = useState(false);
     const [isMinimized, setIsMinimized] = useState(false);
-    const [radioInfo, setRadioInfo] = useState({
-        title: "Radio Sembrador",
-        artist: "Música Cristiana",
-        cover: "/public/img/Logo1.png"
-    });
+    const [position, setPosition] = useState({ x: 20, y: window.innerHeight - 120 });
+    const playerRef = useRef(null);
+    const dragging = useRef(false);
+    const offset = useRef({ x: 0, y: 0 });
 
-    // Toggle play/pause
-    const togglePlay = () => {
-        const audioElement = document.getElementById('radio-player');
-        if (isPlaying) {
-            audioElement.pause();
-        } else {
-            audioElement.play();
-        }
-        setIsPlaying(!isPlaying);
+    // Mouse down
+    const handleMouseDown = (e) => {
+        dragging.current = true;
+        offset.current = {
+            x: e.clientX - position.x,
+            y: e.clientY - position.y,
+        };
     };
 
-    // Handle volume change
-    const handleVolumeChange = (e) => {
-        const newVolume = e.target.value;
-        setVolume(newVolume);
-        const audioElement = document.getElementById('radio-player');
-        audioElement.volume = newVolume / 100;
-        if (newVolume === '0') {
-            setIsMuted(true);
-        } else {
-            setIsMuted(false);
+    // Mouse move
+    const handleMouseMove = (e) => {
+        if (dragging.current) {
+            setPosition({
+                x: e.clientX - offset.current.x,
+                y: e.clientY - offset.current.y,
+            });
         }
     };
 
-    // Toggle mute
-    const toggleMute = () => {
-        const audioElement = document.getElementById('radio-player');
-        if (isMuted) {
-            audioElement.volume = volume / 100;
-        } else {
-            audioElement.volume = 0;
-        }
-        setIsMuted(!isMuted);
+    // Mouse up
+    const handleMouseUp = () => {
+        dragging.current = false;
     };
 
-    // Toggle minimize/maximize
+    useEffect(() => {
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mouseup', handleMouseUp);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, []);
+
     const toggleMinimize = () => {
         setIsMinimized(!isMinimized);
     };
 
+    useEffect(() => {
+        setPosition({ x: 20, y: window.innerHeight - 230 });
+    }, []);
+
     return (
-        <div className="w-full flex justify-center">
-            <div className={`${isMinimized ? 'h-16 w-full sm:w-64 rounded-full' : 'w-full lg:w-1/2 xl:w-1/2 rounded-xl'} transition-all duration-300 shadow-2xl mx-auto mb-6 bg-gradient-to-br from-blue-900 to-greenSky text-white overflow-hidden border-2 border-purple-400/20 max-w-6xl`}>
+        <div
+            ref={playerRef}
+            onMouseDown={handleMouseDown}
+            className="z-50 cursor-move"
+            style={{
+                position: 'fixed',
+                left: position.x,
+                top: position.y,
+                width: isMinimized ? 'auto' : '90%',
+                maxWidth: isMinimized ? '400px' : '600px',
+            }}
+        >
+            <div className={`${isMinimized ? 'h-20 w-full rounded-full' : 'w-full rounded-xl'} transition-all duration-300 shadow-2xl bg-gradient-to-br from-blue-900 to-greenSky text-white overflow-hidden border-2 border-purple-400/20`}>
                 {isMinimized ? (
-                    /* Minimized player */
-                    <button
-                        onClick={toggleMinimize}
-                        className="w-full h-full flex items-center justify-center space-x-3"
-                    >
-                        <img
-                            src={Logo1}
-                            alt="Radio Sembrador"
-                            className="w-10 h-10 object-contain rounded-full animate-pulse"
-                        />
-                        <span className="font-medium">Radio Sembrador</span>
-                    </button>
+                    <div className="w-full flex items-center justify-between px-4 py-2">
+                        <div className="flex items-center space-x-3">
+                            <img
+                                src={Logo1}
+                                alt="Radio Sembrador"
+                                className="w-10 h-10 object-contain rounded-full animate-pulse"
+                            />
+                            <span className={`font-medium ${isMinimized ? 'text-[8px]' : 'text-base'}`}>
+                                Radio Sembrador
+                            </span>
+                        </div>
+                        <audio
+                            id="stream"
+                            controls
+                            preload="none"
+                            className="w-[200px] sm:w-[300px]"
+                        >
+                            <source src="https://conectperu.com/8554/stream" type="audio/mpeg" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                        <button
+                            onClick={toggleMinimize}
+                            className="ml-4 text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
+                        >
+                            <FiMaximize2 className='text-xl'/>
+                        </button>
+                    </div>
                 ) : (
-                    /* Full player */
                     <div className="flex flex-col w-full">
-                        {/* Header with station info */}
                         <div className="flex items-center justify-between p-3 bg-black/30 backdrop-blur-sm">
                             <div className="flex items-center space-x-2">
                                 <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center p-1 border border-white/10">
@@ -91,20 +112,16 @@ const RadioPlayer = () => {
                                 onClick={toggleMinimize}
                                 className="text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
                             >
-                                {/* <Minimize2 size={18} /> */}
+                                    <FiMinimize2 className='text-2xl'/>
                             </button>
                         </div>
 
-                        {/* Styled iframe container with modern borders */}
                         <div className="p-2 md:p-4 bg-gradient-to-r from-indigo-900/50 to-purple-900/50 m-2 md:m-3 shadow-inner rounded-xl">
                             <div className="relative overflow-hidden rounded-xl shadow-lg border border-white/20 backdrop-blur">
-                                {/* Visual indicator for "live" */}
                                 <div className="absolute top-2 right-2 flex items-center space-x-1 bg-black/40 px-2 py-1 rounded-full z-10 backdrop-blur-sm border border-white/10">
                                     <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                                    <span className="text-xs font-semibold">LIVE</span>
+                                    <span className="text-xs font-semibold">En vivo</span>
                                 </div>
-
-                                {/* The iframe with a relative container for styling */}
                                 <div className="relative w-full bg-black/20 overflow-hidden rounded-lg">
                                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 pointer-events-none"></div>
                                     <iframe
@@ -118,27 +135,16 @@ const RadioPlayer = () => {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Album art and now playing - responsive layout */}
-                        <div className="px-4 py-2 flex items-center space-x-3">
-                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden bg-black/20 flex-shrink-0 border border-white/10">
-                                
-                            </div>
-                            <div className="flex-1 min-w-0">
-                               
-                            </div>
-                        </div>
-
                     </div>
                 )}
 
                 <style jsx>{`
-            @keyframes progress {
-              0% { width: 0%; }
-              50% { width: 100%; }
-              100% { width: 0%; }
-            }
-          `}</style>
+                    @keyframes progress {
+                        0% { width: 0%; }
+                        50% { width: 100%; }
+                        100% { width: 0%; }
+                    }
+                `}</style>
             </div>
         </div>
     );
