@@ -223,7 +223,7 @@ const Home = () => {
                     </div>
                     <div>
                         <div className='flex justify-center mt-10'>
-                            <a href="/ia/inicioia">
+                            <a href="/nosotros">
                                 <button className='inset-0 flex justify-center items-center border border-gray-400 p-2 font-urbanist hover:bg-gray-400 hover:text-white'>
                                     Nosotros
                                 </button>

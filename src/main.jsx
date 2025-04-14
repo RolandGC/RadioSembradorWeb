@@ -37,6 +37,7 @@ import { Dashboard } from './pages/pagesAdmin/Dashboard'
 import ProtectedRoutes from './components/protected/ProtectedRoutes'
 import Us from './pages/pagesWeb/Us'
 import Programming from './pages/pagesWeb/Programming'
+import Give from './pages/pagesWeb/Give'
 
 
 const router = createBrowserRouter(
@@ -65,6 +66,10 @@ const router = createBrowserRouter(
         {
           element: <Contact />,
           path: '/contacto'
+        },
+        {
+          element: <Give />,
+          path: '/donar'
         },
         {
           element: <Programming />,

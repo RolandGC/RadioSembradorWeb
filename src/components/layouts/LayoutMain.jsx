@@ -45,7 +45,7 @@ const links = [
         id: 5,
     },
     {
-        link: "/blog",
+        link: "/donar",
         text: "Donar",
         id: 4,
     },
@@ -136,7 +136,7 @@ const LayoutMain = () => {
                     </div>
                 </div>
 
-                <main className="bg-gray-200 pt-24 ">
+                <main className="bg-gray-200 pt-[70px] ">
                     <RadioPlayer />
                     <Outlet />
                 </main>
