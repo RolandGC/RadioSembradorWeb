@@ -64,7 +64,7 @@ function DetailProps() {
             </div>
             <div className='lg:flex w-11/12  max-w-7xl gap-2 mx-auto my-5'>
                 <div className='lg:w-3/5 xl:w-4/6'>
-                    <h3 className='font-bold text-xl font-ubuntu'>Detalles</h3>
+                    <h3 className='font-bold text-xl font-roboto'>Detalles</h3>
 
                     <article className='my-3'>
                         <span className='bg-blue2 font-bold text-white p-2 rounded'>Entrega Inmediata</span>
@@ -98,7 +98,7 @@ function DetailProps() {
                                 </div>
                             </div>
                         </div>
-                        <h3 className='font-bold text-xl font-ubuntu my-2'>
+                        <h3 className='font-bold text-xl font-roboto my-2'>
                             Descripcción
                         </h3>
                         <p className="overflow-hidden break-words">

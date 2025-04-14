@@ -29,7 +29,7 @@ const Us = () => {
     ]
     return (
         <div className='sm:px-4 lg:px-6'>
-            <h1 className='text-[40px] font-bold font-ubuntu'>Nosotros</h1>
+            <h1 className='text-[40px] font-bold font-roboto'>Nosotros</h1>
             <div>
                 <div>
                     <section
@@ -42,7 +42,7 @@ const Us = () => {
                         <div
                             className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
                         >
-                            <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right font-ubuntu">
+                            <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right font-roboto">
                                 <h1 className="text-3xl font-extrabold sm:text-5xl text-white">
                                     Somos
 
@@ -68,7 +68,7 @@ const Us = () => {
                                     <GiBullseye className='text-3xl w-15' />
                                 </div>
                                 <div className=''>
-                                    <h3 className="text-center text-3xl font-semibold leading-7  text-gray-900 font-ubuntu my-2"> Misión</h3>
+                                    <h3 className="text-center text-3xl font-semibold leading-7  text-gray-900 font-roboto my-2"> Misión</h3>
                                     <p className="text-sm font-medium font-urbanist leading-6 text-gray-700 my-2">Somos sembradores de la palabra.</p>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@ const Us = () => {
                                     <SlRocket className='text-3xl w-15' />
                                 </div>
                                 <div className=''>
-                                    <h3 className="text-center text-3xl font-semibold leading-7 text-gray-900 font-ubuntu  my-2"> Visón</h3>
+                                    <h3 className="text-center text-3xl font-semibold leading-7 text-gray-900 font-roboto  my-2"> Visón</h3>
                                     <p className="text-sm font-medium font-urbanist leading-6 text-gray-700 my-2">Ser una Radio que de gloria a Dios.</p>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ const Us = () => {
                 </div>
                 <br className='' />
                 <div className='m-4'>
-                    <h1 className='font-ubuntu font-bold text-center text-3xl'>Nuestros equipo</h1>
+                    <h1 className='font-roboto font-bold text-center text-3xl'>Nuestros equipo</h1>
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 rounded-md ">
                         {properties.map((product) => (
                             <div key={product.id} className="group relative shadow-lg">

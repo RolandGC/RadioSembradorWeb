@@ -67,7 +67,7 @@ export const DetailProperties = () => {
     return (
         <div className="p-6 max-w-7xl mx-auto">
             <section class="bg-white w-full">
-                <div class="py-4 px-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6 font-ubuntu ">
+                <div class="py-4 px-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6 font-roboto ">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 h-full">
                         <div class="col-span-2 sm:col-span-1 md:col-span-2 bg-gray-50 h-auto md:h-full flex flex-col">
                             <div class="group relative flex flex-col overflow-hidden  px-4 pb-4 pt-40 flex-grow">

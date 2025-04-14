@@ -120,7 +120,7 @@ const LayoutMain = () => {
                                     <Link
                                         to={link.link}
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] font-ubuntu transition duration-300 ease-in-out transform hover:scale-110 hover:text-greenSky relative group"
+                                        className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition duration-300 ease-in-out transform hover:scale-110 hover:text-greenSky relative group"
                                         key={link.id}
                                     >
                                         <span className="relative z-10">{link.text}</span>

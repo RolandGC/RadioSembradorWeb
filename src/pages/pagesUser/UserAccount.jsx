@@ -69,7 +69,7 @@ export const UserAccount = () => {
     return (
         <div className='bg-white flex items-center justify-center border-t-2'>
             <div className='lg:px-10 md:px-3 items-center'>
-                <h3 className='text-gray-900 text-3xl font-ubuntu'>Mi cuenta</h3>
+                <h3 className='text-gray-900 text-3xl font-roboto'>Mi cuenta</h3>
                 <div className='text-center border-gray-500 font-urbanist'>
                     <h3 className='text-center lg:text-[25px] md:text-[20px]'>Datos personales</h3>
                     <div className='flex'>

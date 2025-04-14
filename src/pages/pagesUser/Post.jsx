@@ -75,7 +75,7 @@ function Post() {
 
     return (
         <FormProvider {...methods}>
-            <div className='p-2 flex-row justify-center items-center font-ubuntu  max-w-3xl mx-auto'>
+            <div className='p-2 flex-row justify-center items-center font-roboto  max-w-3xl mx-auto'>
                 <div className="text-center">
                     <h2 className="text-2xl font-semibold text-gray-900">Formulario de publicación</h2>
                 </div>
@@ -90,7 +90,7 @@ function Post() {
                         <FormPg3 currentPage={currentPage} files={files} setFiles={setFiles} />
                         <FormPg4 currentPage={currentPage} />
 
-                        <div className="mt-8 flex justify-between font-ubuntu  gap-40">
+                        <div className="mt-8 flex justify-between font-roboto  gap-40">
                             {currentPage !== 1 && (
                                 <div className="flex justify-end">
                                     <button

@@ -31,6 +31,7 @@ export default {
                 bebas: ['Bebas Neue', 'sans-serif'],
                 urbanist: ['Urbanist'],
                 futura: ['Furuta Std', 'sans-serif'],
+                roboto: ['Roboto']
             },
             letterSpacing: {
                 'extra-wide': '0.50em',

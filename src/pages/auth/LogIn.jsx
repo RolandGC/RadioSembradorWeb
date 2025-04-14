@@ -36,7 +36,7 @@ function LogIn() {
                             src="/public/img/logo.png"
                             alt="my Company"
                         />
-                        <h2 className="mt-10 mb-5 text-center text-2xl font-bold leading-9  text-black font-ubuntu ">
+                        <h2 className="mt-10 mb-5 text-center text-2xl font-bold leading-9  text-black font-roboto ">
                             Iniciar sesión
                         </h2>
                     </div>

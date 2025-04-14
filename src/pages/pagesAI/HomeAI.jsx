@@ -83,7 +83,7 @@ function HomeAI() {
                     <PrestenText />
                 </div>
                 {/* <div
-                    className={` absolute top-5 text-center py-1 px-3 rounded-full font-bold text-white transition-all duration-1000 font-ubuntu  text-4xl ${classText} `}
+                    className={` absolute top-5 text-center py-1 px-3 rounded-full font-bold text-white transition-all duration-1000 font-roboto  text-4xl ${classText} `}
                 >
                     {textContent[textIndex]}
                 </div> */}
@@ -92,7 +92,7 @@ function HomeAI() {
                 <Flyer2 />
             </div>
             <div className=''>
-                <h4 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Galería de imágenes</h4>
+                <h4 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-roboto ">Galería de imágenes</h4>
             </div>
             <div className='overflow-hidden bg-cover bg-center w-full h-120 mt-6'>
                 <ImageGallery items={images}
