@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Copy, Check, Heart } from 'lucide-react';
-import scotiabank from '/public/img/scotiabank.png'
+//import scotiabank from '/public/img/scotiabank.png'
+import scotiabank from '/public/img/scotiabank.png'; 
+import bcp from '/public/img/bcp.jpg'; 
+import Interbank from '/public/img/interbank.png'; 
+import BBVA from '/public/img/bbva.png'; 
+import yapeLogo from '/public/img/yape.jpg';
+import plinLogo from '/public/img/plin.jpg';
 
 export default function DonacionComponent() {
     const [activeTab, setActiveTab] = useState('bancos');
@@ -11,25 +17,25 @@ export default function DonacionComponent() {
             nombre: 'Scotiabank',
             cuenta: '21891323232',
             cci: '2123213213',
-            logo: '/public/img/scotiabank.png'
+            logo: scotiabank,
         },
         {
             nombre: 'BCP',
             cuenta: '3243243243',
             cci: '123242442',
-            logo: '/api/placeholder/120/60'
+            logo: bcp,
         },
         {
             nombre: 'Interbank',
             cuenta: '243242444',
             cci: '3243243243',
-            logo: '/api/placeholder/120/60'
+            logo: Interbank
         },
         {
             nombre: 'BBVA',
             cuenta: '0011-0057-0000123456',
             cci: '011-057-000000123456-78',
-            logo: '/api/placeholder/120/60'
+            logo: BBVA 
         }
     ];
 
@@ -37,14 +43,14 @@ export default function DonacionComponent() {
         {
             nombre: 'Yape',
             cuenta: '323443243',
-            logo: '/public/img/yape.jpg',
+            logo: yapeLogo,
             qr: '/api/placeholder/200/200',
             color: 'bg-purple-500/20'
         },
         {
             nombre: 'Plin',
             cuenta: '987654321',
-            logo: '/public/img/plin.jpg',
+            logo: plinLogo,
             qr: '/api/placeholder/200/200',
             color: 'bg-green-500/20'
         }
@@ -98,8 +104,8 @@ export default function DonacionComponent() {
                             {bancos.map((banco, index) => (
                                 <div key={index} className="bg-white/10 rounded-lg p-4 transition-all hover:bg-white/15">
                                     <div className="flex items-center mb-4">
-                                        <div className="w-16 h-10 bg-white/80 flex items-center justify-center rounded-md mr-3">
-                                            <img src={banco.logo} alt={`Logo de ${banco.nombre}`} className="max-h-8" />
+                                        <div className="w-36 h-36 bg-white/80 flex items-center justify-center rounded-xl mr-3">
+                                            <img src={banco.logo} alt={`Logo de ${banco.nombre}`} className="max-h-30 rounded-xl" />
                                         </div>
                                         <h3 className="text-xl font-semibold">{banco.nombre}</h3>
                                     </div>
@@ -146,8 +152,8 @@ export default function DonacionComponent() {
                         <div className="grid md:grid-cols-2 gap-6">
                             {metodosMoviles.map((metodo, index) => (
                                 <div key={index} className="text-center bg-white/10 rounded-lg p-5 flex flex-col items-center">
-                                    <div className={`${metodo.color} rounded-full w-24 h-24 mb-4 flex items-center justify-center`}>
-                                        <img src={metodo.logo} alt={`Logo ${metodo.nombre}`} className="w-16 h-16" />
+                                    <div className={`${metodo.color} rounded-full w-36 h-36 mb-4 flex items-center justify-center rounded-xl`}>
+                                        <img src={metodo.logo} alt={`Logo ${metodo.nombre}`} className="w-36 h-36 rounded-xl" />
                                     </div>
 
                                     <h3 className="text-xl font-semibold mb-3">{metodo.nombre}</h3>

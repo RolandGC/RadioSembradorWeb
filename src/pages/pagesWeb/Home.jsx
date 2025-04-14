@@ -18,6 +18,8 @@ import Flyer from '../../components/home/flyers/Flyer';
 import PrestenText1 from '../../components/home/PrestenText';
 import Loading from '../../components/compGeneral/Loading';
 import { Selector } from '@rewind-ui/core';
+import ImageGallery from '../../components/properties/ImageGallery';
+import Sponsors from '../../components/home/Sponsors';
 
 
 function Arrow(props) {
@@ -180,41 +182,6 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* <div className='flex flex-col md:flex-row bg-white rounded-sm'>
-                <div className='p-4 w-full sm:w-full md:w-1/3'>
-                    <select
-                        id="country"
-                        name="country"
-                        autoComplete="country-name"
-                        className="inline-flex w-full justify-center border border-gray-300 shadow-sm px-4 py-2 bg-white text-[16px] font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-100 font-urbanist"
-                    >
-                        <option>Seleccione país</option>
-                        <option>Perú</option>
-                        <option>Chile</option>
-                        <option>México</option>
-                        <option>Venezuela</option>
-                        <option>Colombia</option>
-                        <option>Ecuador</option>
-                        <option>Argentina</option>
-                        <option>Brasil</option>
-                        <option>Uruguay</option>
-                    </select>
-                </div>
-                <div className='container mx-auto p-4 font-urbanist'>
-                    <input aria-haspopup="true"
-                        aria-expanded="true"
-                        type="text" placeholder="Ingresa el número" className="inline-flex justify-center w-full border border-gray-200 shadow-sm px-2 py-3 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-100" />
-                </div>
-                <div className="flex justify-center items-center p-4 space-x-4 font-urbanist">
-                    <button
-                        type="button"
-                        className="px-5 py-3 bg-greenSky text-white hover:bg-gray-500 focus:outline-none items-center flex text-mx rounded-sm"
-                    >
-                        <FaSearch className='flex mr-1  selection: ' /> Buscar
-                    </button>
-                </div>
-            </div> */}
-
                 <div className='bg-gray-100'>
                     <div className='bg-gray-100'>
                         <div className='mt-10'>
@@ -237,14 +204,11 @@ const Home = () => {
                     <div className='my-20'>
                         {/* <Cards1 /> */}
                         <br className='m-4' />
-                        {/* <div className='p-8 slider-container '>
-                    <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Inmuebles similares a los que viste</h2>
-                    <Slider {...settings}>
+                        <div className='p-8 slider-container '>
+                    <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-ubuntu ">Galeria de imagenes</h2>
+                    {/* <Slider {...settings}>
                         <div>
                             <h1> <ItemSellOk /></h1>
-                        </div>
-                        <div>
-                            <h2><ItemSellOk /></h2>
                         </div>
                         <div>
                             <h2><ItemSellOk /></h2>
@@ -255,8 +219,16 @@ const Home = () => {
                         <div>
                             <h5><ItemSellOk /></h5>
                         </div>
-                    </Slider>
-                </div> */}
+                    </Slider> */}
+                </div>
+
+                <div>
+                    <ImageGallery/>
+                </div>
+
+                <div>
+                    <Sponsors/>
+                </div>
 
                         {/* <div className='m-4'>
                     <div className=" pt-8">

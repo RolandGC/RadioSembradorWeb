@@ -3,13 +3,13 @@ import logo2 from "/public/img/building.jpg"
 
 export default function Programming() {
     const diasSemana = [
-        { dia: "Lunes", fecha: "07 ABR" },
-        { dia: "Martes", fecha: "08 ABR" },
-        { dia: "Miércoles", fecha: "09 ABR" },
-        { dia: "Jueves", fecha: "10 ABR" },
-        { dia: "Viernes", fecha: "11 ABR" },
-        { dia: "Sábado", fecha: "12 ABR" },
-        { dia: "Domingo", fecha: "13 ABR" },
+        { dia: "Lunes", fecha: "14 ABR" },
+        { dia: "Martes", fecha: "15 ABR" },
+        { dia: "Miércoles", fecha: "16 ABR" },
+        { dia: "Jueves", fecha: "17 ABR" },
+        { dia: "Viernes", fecha: "18 ABR" },
+        { dia: "Sábado", fecha: "19 ABR" },
+        { dia: "Domingo", fecha: "20 ABR" },
     ];
 
     const [diaSeleccionado, setDiaSeleccionado] = useState(0);
@@ -18,8 +18,13 @@ export default function Programming() {
         0: [ // Lunes
             {
             hora: "00:00", nombre: "AMANECER CON CRISTO", locutor: "Pastor Samuel", imagen: "/public/img/logo2.png" },
-            { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: {logo2}},
-            { hora: "03:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: {logo2} },
+            { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/public/img/sugel.jpg" },
+            { hora: "03:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
+            { hora: "05:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
+            { hora: "07:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
+            { hora: "09:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
+            { hora: "10:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
+
         ],
         1: [ // Martes
             { hora: "00:00", nombre: "REFLEXIONES", locutor: "Pastor Juan", imagen: "/api/placeholder/80/80" },

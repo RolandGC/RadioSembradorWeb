@@ -4,12 +4,12 @@ import { FiMinimize2, FiMaximize2 } from "react-icons/fi";
 
 const RadioPlayer = () => {
     const [isMinimized, setIsMinimized] = useState(false);
-    const [position, setPosition] = useState({ x: 20, y: window.innerHeight - 120 });
+    const [position, setPosition] = useState({ x: 20, y: window.innerHeight - 230 });
     const playerRef = useRef(null);
     const dragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
 
-    // Mouse down
+    // MOUSE EVENTS
     const handleMouseDown = (e) => {
         dragging.current = true;
         offset.current = {
@@ -18,7 +18,6 @@ const RadioPlayer = () => {
         };
     };
 
-    // Mouse move
     const handleMouseMove = (e) => {
         if (dragging.current) {
             setPosition({
@@ -28,17 +27,47 @@ const RadioPlayer = () => {
         }
     };
 
-    // Mouse up
     const handleMouseUp = () => {
         dragging.current = false;
     };
 
+    // TOUCH EVENTS
+    const handleTouchStart = (e) => {
+        dragging.current = true;
+        const touch = e.touches[0];
+        offset.current = {
+            x: touch.clientX - position.x,
+            y: touch.clientY - position.y,
+        };
+    };
+
+    const handleTouchMove = (e) => {
+        if (dragging.current) {
+            const touch = e.touches[0];
+            setPosition({
+                x: touch.clientX - offset.current.x,
+                y: touch.clientY - offset.current.y,
+            });
+        }
+    };
+
+    const handleTouchEnd = () => {
+        dragging.current = false;
+    };
+
     useEffect(() => {
+        // Desktop
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseup', handleMouseUp);
+        // Mobile
+        window.addEventListener('touchmove', handleTouchMove);
+        window.addEventListener('touchend', handleTouchEnd);
+
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleTouchEnd);
         };
     }, []);
 
@@ -46,15 +75,12 @@ const RadioPlayer = () => {
         setIsMinimized(!isMinimized);
     };
 
-    useEffect(() => {
-        setPosition({ x: 20, y: window.innerHeight - 230 });
-    }, []);
-
     return (
         <div
             ref={playerRef}
             onMouseDown={handleMouseDown}
-            className="z-50 cursor-move"
+            onTouchStart={handleTouchStart}
+            className="z-50 cursor-move touch-none"
             style={{
                 position: 'fixed',
                 left: position.x,
@@ -89,7 +115,7 @@ const RadioPlayer = () => {
                             onClick={toggleMinimize}
                             className="ml-4 text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
                         >
-                            <FiMaximize2 className='text-xl'/>
+                            <FiMaximize2 className='text-xl' />
                         </button>
                     </div>
                 ) : (
@@ -112,7 +138,7 @@ const RadioPlayer = () => {
                                 onClick={toggleMinimize}
                                 className="text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
                             >
-                                    <FiMinimize2 className='text-2xl'/>
+                                <FiMinimize2 className='text-2xl' />
                             </button>
                         </div>
 
@@ -137,14 +163,6 @@ const RadioPlayer = () => {
                         </div>
                     </div>
                 )}
-
-                <style jsx>{`
-                    @keyframes progress {
-                        0% { width: 0%; }
-                        50% { width: 100%; }
-                        100% { width: 0%; }
-                    }
-                `}</style>
             </div>
         </div>
     );
