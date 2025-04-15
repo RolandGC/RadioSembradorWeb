@@ -15,41 +15,41 @@ export default function DonacionComponent() {
     const bancos = [
         {
             nombre: 'Scotiabank',
-            cuenta: '21891323232',
-            cci: '2123213213',
+            cuenta: '**** **** ****',
+            cci: '**** **** ****',
             logo: scotiabank,
         },
-        {
-            nombre: 'BCP',
-            cuenta: '3243243243',
-            cci: '123242442',
-            logo: bcp,
-        },
-        {
-            nombre: 'Interbank',
-            cuenta: '243242444',
-            cci: '3243243243',
-            logo: Interbank
-        },
-        {
-            nombre: 'BBVA',
-            cuenta: '0011-0057-0000123456',
-            cci: '011-057-000000123456-78',
-            logo: BBVA 
-        }
+        // {
+        //     nombre: 'BCP',
+        //     cuenta: '3243243243',
+        //     cci: '123242442',
+        //     logo: bcp,
+        // },
+        // {
+        //     nombre: 'Interbank',
+        //     cuenta: '243242444',
+        //     cci: '3243243243',
+        //     logo: Interbank
+        // },
+        // {
+        //     nombre: 'BBVA',
+        //     cuenta: '0011-0057-0000123456',
+        //     cci: '011-057-000000123456-78',
+        //     logo: BBVA 
+        // }
     ];
 
     const metodosMoviles = [
         {
             nombre: 'Yape',
-            cuenta: '323443243',
+            cuenta: '928 565 807',
             logo: yapeLogo,
             qr: '/api/placeholder/200/200',
             color: 'bg-purple-500/20'
         },
         {
             nombre: 'Plin',
-            cuenta: '987654321',
+            cuenta: '928 565 807',
             logo: plinLogo,
             qr: '/api/placeholder/200/200',
             color: 'bg-green-500/20'
@@ -63,7 +63,7 @@ export default function DonacionComponent() {
     };
 
     return (
-        <div className="max-w-3xl mx-auto p-6 rounded-xl bg-gradient-to-br from-blue-900 to-cyan-700 text-white overflow-hidden border-2 border-purple-400/20 shadow-xl">
+        <div className="max-w-3xl mx-auto m-8 bg-gray-200 p-6 rounded-xl bg-gradient-to-br from-blue-900 to-cyan-700 text-white overflow-hidden border-2 border-purple-400/20 shadow-xl">
             <div className="text-center mb-8">
                 <div className="flex justify-center mb-4">
                     <Heart className="text-red-400 w-12 h-12" />

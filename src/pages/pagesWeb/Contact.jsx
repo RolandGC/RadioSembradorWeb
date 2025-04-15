@@ -33,7 +33,7 @@ function Contact() {
         <div className='bg-white border-t-2'>
             <div className="max-w-6xl w-11/12 mx-auto flex flex-col lg:flex-row lg:items-center">
                 <div className="hidden lg:block pb-8 font-urbanist lg:w-full">
-                    <img src={building} alt="" className="w-200 lg:w-140 lg:h-200 object-cover mx-auto" />
+                    <img src={building} alt="" className="w-200 lg:w-140 lg:h-200 object-cover mx-auto rounded-xl" />
                 </div>
                 <form className='lg:w-full p-3 lg:p-10' noValidate onSubmit={handleSubmit(handleSubmitContact)}>
                     <div className="space-y-1 font-urbanist">

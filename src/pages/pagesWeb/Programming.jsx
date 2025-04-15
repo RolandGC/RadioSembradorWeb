@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import logo2 from "/public/img/building.jpg"
+
+import { useEffect, useState } from 'react';
+import logo2 from "/public/img/building.jpg";
 
 export default function Programming() {
     const diasSemana = [
@@ -13,39 +14,147 @@ export default function Programming() {
     ];
 
     const [diaSeleccionado, setDiaSeleccionado] = useState(0);
+    const [horaActual, setHoraActual] = useState(null);
+
+    useEffect(() => {
+        // Obtener hora actual en la zona horaria de Perú
+        const fecha = new Date().toLocaleString("en-US", { timeZone: "America/Lima" });
+        const hora = new Date(fecha).getHours();
+        setHoraActual(hora);
+    }, []);
 
     const programacion = {
         0: [ // Lunes
-            {
-            hora: "00:00", nombre: "AMANECER CON CRISTO", locutor: "Pastor Samuel", imagen: "/public/img/logo2.png" },
-            { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/public/img/sugel.jpg" },
-            { hora: "03:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
-            { hora: "05:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
-            { hora: "07:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
-            { hora: "09:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
-            { hora: "10:00", nombre: "LA PALABRA HOY", locutor: "Hermana María", imagen: "/public/img/sugel.jpg" },
+            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "John Piper (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "10:00", nombre: "C_LA SANTA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "Charles Spurgeon (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "Samuel Prohens", imagen: "/img/logoVertical.png" },
+            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "John MacArthur (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
 
         ],
         1: [ // Martes
-            { hora: "00:00", nombre: "REFLEXIONES", locutor: "Pastor Juan", imagen: "/api/placeholder/80/80" },
-            { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
-            { hora: "03:00", nombre: "ESTUDIO BÍBLICO", locutor: "Pastor Pedro", imagen: "/api/placeholder/80/80" },
+            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "John Piper (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "10:00", nombre: "C_LA SANTA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "Charles Spurgeon (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "Samuel Prohens", imagen: "/img/logoVertical.png" },
+            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "John MacArthur (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
         ],
         // Programación para los demás días...
         2: [ // Miércoles
-            { hora: "00:00", nombre: "ALABANZAS", locutor: "Grupo Adoración", imagen: "/api/placeholder/80/80" },
-            { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
-            { hora: "03:00", nombre: "TESTIMONIOS", locutor: "Invitados", imagen: "/api/placeholder/80/80" },
+            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "John Piper (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "10:00", nombre: "C_LA SANTA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "Charles Spurgeon (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "Samuel Prohens", imagen: "/img/logoVertical.png" },
+            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "John MacArthur (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
         ],
         3: [ // Jueves
-            { hora: "00:00", nombre: "MADRUGADA CON DIOS", locutor: "Pastor José", imagen: "/api/placeholder/80/80" },
-            { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
-            { hora: "03:00", nombre: "MENSAJES DE FE", locutor: "Hermana Lucía", imagen: "/api/placeholder/80/80" },
+            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "John Piper (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "10:00", nombre: "C_LA SANTA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "Charles Spurgeon (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "Samuel Prohens", imagen: "/img/logoVertical.png" },
+            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "John MacArthur (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
         ],
         4: [ // Viernes
-            { hora: "00:00", nombre: "ALABANZAS NOCTURNAS", locutor: "Coro Sembrador", imagen: "/api/placeholder/80/80" },
-            { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
-            { hora: "03:00", nombre: "PREPARANDO EL SÁBADO", locutor: "Pastor David", imagen: "/api/placeholder/80/80" },
+            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "John Piper (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "10:00", nombre: "C_LA SANTA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "Charles Spurgeon (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "Samuel Prohens", imagen: "/img/logoVertical.png" },
+            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "Charles Stanley (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "John MacArthur (Voz Traducida)", imagen: "/img/logoVertical.png" },
+            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
         ],
         5: [ // Sábado
             { hora: "00:00", nombre: "MÚSICA DE ADORACIÓN", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
@@ -57,6 +166,12 @@ export default function Programming() {
             { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
             { hora: "03:00", nombre: "HISTORIAS BÍBLICAS", locutor: "Hermano Lucas", imagen: "/api/placeholder/80/80" },
         ],
+    };
+
+    const esProgramaActual = (horaProgramada) => {
+        if (horaActual === null) return false;
+        const horaDelPrograma = parseInt(horaProgramada.split(":")[0]);
+        return horaDelPrograma === horaActual;
     };
 
     return (
@@ -90,22 +205,31 @@ export default function Programming() {
 
             {/* Programas del día */}
             <div className="space-y-4">
-                {programacion[diaSeleccionado].map((programa, index) => (
-                    <div key={index} className="bg-white rounded shadow-sm overflow-hidden">
-                        <div className="flex items-center p-4">
-                            <div className="flex-shrink-0 rounded-full overflow-hidden">
-                                <img src={programa.imagen} alt={programa.nombre} className="w-20 h-20 object-cover" />
-                            </div>
-                            <div className="ml-6 flex-grow">
-                                <h3 className="text-xl font-bold uppercase">{programa.nombre}</h3>
-                                <p className="text-gray-600">{programa.locutor}</p>
-                            </div>
-                            <div className="text-gray-300 text-5xl font-light">
-                                {programa.hora}
+                {programacion[diaSeleccionado].map((programa, index) => {
+                    const actual = esProgramaActual(programa.hora);
+                    return (
+                        <div
+                            key={index}
+                            className={`rounded shadow-sm overflow-hidden transition-all duration-300 ${actual ? 'bg-green-100 border-l-4 border-greenSky' : 'bg-white'
+                                }`}
+                        >
+                            <div className="flex items-center p-4">
+                                <div className="flex-shrink-0 rounded-full overflow-hidden">
+                                    <img src={programa.imagen} alt={programa.nombre} className="w-20 h-20 object-cover" />
+                                </div>
+                                <div className="ml-6 flex-grow">
+                                    <h3 className={`text-xl font-bold uppercase ${actual ? 'text-greenSky' : ''}`}>
+                                        {programa.nombre}
+                                    </h3>
+                                    <p className="text-gray-600">{programa.locutor}</p>
+                                </div>
+                                <div className="text-gray-300 text-5xl font-light">
+                                    {programa.hora}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </div>
     );

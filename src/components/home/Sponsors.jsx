@@ -28,7 +28,7 @@ const Sponsors = () => {
         <div className="bg-black/50 backdrop-blur-sm py-12 bg-gradient-to-br from-blue-900 to-greenSky text-white overflow-hidden rounded-2xl">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Nuestros Auspiciadores</h2>
+                    <h2 className="font-extrabold tracking-tight sm:text-4xl lg:text-[50px] font-bold text-center p-4 font-futura">Nuestros Auspiciadores</h2>
                     <p className="mt-2 text-lg text-white/70">Gracias a quienes hacen posible nuestra transmisión.</p>
                 </div>
 

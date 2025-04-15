@@ -28,67 +28,67 @@ const Us = () => {
         },
     ]
     return (
-        <div className='sm:px-4 lg:px-6'>
-            <h1 className='text-[40px] font-bold font-futura'>Nosotros</h1>
+        <div className='sm:px-4 lg:px-6 rounded-xl' >
+            <h1 className='text-[40px] font-bold font-futura text-center'>Nosotros</h1>
             <div>
                 <div>
                     <section
-                        className="relative bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url(${consola})` }}                    >
-                        <div
-                            className="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
-                        ></div>
+                        className="relative bg-cover bg-center bg-no-repeat rounded-xl overflow-hidden"
+                        style={{ backgroundImage: `url(${consola})` }}
+                    >
+                        {/* Overlay oscuro fijo, sin romper en móviles */}
+                        <div className="absolute inset-0 bg-black/15 bg-gradient-to-r from-black/70 to-black/30 rounded-xl"></div>
 
-                        <div
-                            className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
-                        >
-                            <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right font-futura">
+                        <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
+                            <div className="max-w-xl text-center sm:text-left font-futura">
                                 <h1 className="text-3xl font-extrabold sm:text-5xl text-white">
                                     Somos
-
-                                    {/* <strong className="block font-extrabold text-rose-700"> Forever Home. </strong> */}
                                 </h1>
 
                                 <p className="mt-4 max-w-lg sm:text-xl/relaxed text-white">
-                                    Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite Desde Tacna – Peru.
+                                    Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite desde Tacna – Peru.
                                 </p>
-
-
                             </div>
                         </div>
                     </section>
+
+
                 </div>
                 <br />
                 <br />
                 <div className="max-w-5xl mx-auto w-11/12">
-                    <ul role="list" className="grid gap-8 sm:grid-cols-2 sm:gap-5 md:gap-10 border-gray-300">
-                        <li >
-                            <div className="flex items-center gap-x-6 sm:gap-x-2 md:gap-x-6 border border-gray-500 bg-white shadow-lg">
-                                <div className='rounded-full ml-2 px-3 py-[13px] bg-gray-300'>
-                                    <GiBullseye className='text-3xl w-15' />
+                    <ul role="list" className="grid gap-10 sm:grid-cols-2 md:gap-10">
+                        <li className="transition-transform duration-300 hover:scale-[1.03]">
+                            <div className="flex items-center gap-x-4 md:gap-x-6 border border-gray-300 bg-white shadow-xl hover:shadow-2xl rounded-2xl p-5 transition-all duration-300">
+                                <div className="rounded-full p-4 bg-gradient-to-tr from-greenSky to-green-300 shadow-md">
+                                    <GiBullseye className="text-white text-4xl" />
                                 </div>
-                                <div className=''>
-                                    <h3 className="text-center text-3xl font-semibold leading-7  text-gray-900 font-futura my-2"> Misión</h3>
-                                    <p className="text-sm font-medium font-urbanist leading-6 text-gray-700 my-2">Somos sembradores de la palabra.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li >
-                            <div className="flex items-center gap-x-6 sm:gap-x-2 md:gap-x-6 border border-gray-500 bg-white shadow-md">
-                                <div className='rounded-full ml-2 px-3 py-[13px] bg-gray-300'>
-                                    <SlRocket className='text-3xl w-15' />
-                                </div>
-                                <div className=''>
-                                    <h3 className="text-center text-3xl font-semibold leading-7 text-gray-900 font-futura  my-2"> Visón</h3>
-                                    <p className="text-sm font-medium font-urbanist leading-6 text-gray-700 my-2">Ser una Radio que de gloria a Dios.</p>
+                                <div>
+                                    <h3 className="text-2xl font-bold text-gray-900 font-futura">Misión</h3>
+                                    <p className="text-base font-urbanist text-gray-600 mt-2">
+                                        Somos sembradores de la palabra.
+                                    </p>
                                 </div>
                             </div>
                         </li>
 
+                        <li className="transition-transform duration-300 hover:scale-[1.03]">
+                            <div className="flex items-center gap-x-4 md:gap-x-6 border border-gray-300 bg-white shadow-xl hover:shadow-2xl rounded-2xl p-5 transition-all duration-300">
+                                <div className="rounded-full p-4 bg-gradient-to-tr from-yellow to-purple-400 shadow-md">
+                                    <SlRocket className="text-white text-4xl" />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-bold text-gray-900 font-futura">Visión</h3>
+                                    <p className="text-base font-urbanist text-gray-600 mt-2">
+                                        Ser una Radio que dé gloria a Dios.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <br className='' />
-                <div className='m-4'>
+                {/* <div className='m-4'>
                     <h1 className='font-futura font-bold text-center text-3xl'>Nuestros equipo</h1>
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 rounded-md ">
                         {properties.map((product) => (
@@ -103,9 +103,6 @@ const Us = () => {
                                             />
 
                                         </a>
-                                        {/* <FaRegHeart className="bg-white absolute top-5 right-2 py-1 px-3 rounded-full text-black text-[40px]" /> */}
-                                        {/* <span className="bg-[#DC3545] absolute top-5 right-2 py-1 px-3 rounded-full text-white text-[10px]" >ID: {product.id}</span>
-                                            <span className="bg-blue-800 absolute text-end bottom-36 right-2 py-1 px-3 rounded-full text-white text-[10px]" >{product.type}</span> */}
                                     </div>
                                 </div>
                                 <div className='bg-white p-2 font-urbanist'>
@@ -120,16 +117,13 @@ const Us = () => {
                                             <h3 className="text-sm text-gray-600 flex">
                                                 {product.locate}
                                             </h3>
-                                            {/* <button className={`${product.buttonColor} text-white p-2 rounded-md`}>Conocer más</button> */}
                                         </div>
                                     </div>
-                                    {/* <span className="bg-[#DC3545] absolute top-5 right-2 py-1 px-3 rounded-full text-white text-[10px]" >ID: {product.id}</span>
-                                            <span className="bg-blue-800 absolute text-end bottom-36 right-2 py-1 px-3 rounded-full text-white text-[10px]" >{product.type}</span> */}
                                 </div>
                             </div>
                         ))}
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

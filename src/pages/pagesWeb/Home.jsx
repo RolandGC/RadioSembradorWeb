@@ -182,22 +182,18 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className='bg-gray-100'>
-                    <div className='bg-gray-100'>
-                        <div className='mt-10'>
-                            <Cards3 />
-                        </div>
+                <div className='bg-gray-200'>
+                    <div className='mt-10'>
+                        <Cards3 />
                     </div>
-                    
                     {/* <div className='mt-10'>
                 <Flyer />
             </div> */}
-                    {/* <Loading /> */}
                     <div className='my-20'>
                         {/* <Cards1 /> */}
                         <br className='m-4' />
                         <div className='p-8 slider-container '>
-                            <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-futura ">Galeria de imagenes</h2>
+                            {/* <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-futura ">Galeria de imagenes</h2> */}
                             {/* <Slider {...settings}>
                         <div>
                             <h1> <ItemSellOk /></h1>
@@ -214,10 +210,14 @@ const Home = () => {
                     </Slider> */}
                         </div>
 
-                        <div>
+                        {/* <div>
                             <ImageGallery />
-                        </div>
-
+                        </div> */}
+                        <br className='' />
+                        <br className='' />
+                        <br className='' />
+                        <br className='' />
+                        <br className='' />
                         <div className='lg:mx-10 rounded-2xl sm:mx-5'>
                             <Sponsors />
                         </div>
@@ -265,7 +265,7 @@ const Home = () => {
                     <br className='' />
 
                     <div className="w-full max-w-6xl mx-auto p-4">
-                        <h2 className="text-2xl font-bold mb-4 text-center">Dónde estamos</h2>
+                        <h2 className=" font-bold mb-4 text-center text-[45px] font-bold  text-gray-700 text-center p-4 font-futura">Dónde estamos</h2>
                         <div className="rounded-2xl overflow-hidden shadow-lg">
                             <iframe
                                 title="Ubicación de la radio"
@@ -280,6 +280,8 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+
+                <br className='' />
             </main>
         </>
     )

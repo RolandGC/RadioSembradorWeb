@@ -11,11 +11,11 @@ const DonationInfo = () => {
                     <img
                         src="/img/yape.jpg"
                         alt="Yape Logo"
-                        className="w-12 h-12 object-contain"
+                        className="w-12 h-12 object-contain rounded-xl"
                     />
                     <div>
                         <p className="text-sm text-gray-600 font-medium">Número Yape:</p>
-                        <p className="text-lg font-semibold text-purple-700">542322332</p>
+                        <p className="text-lg font-semibold text-purple-700">928 565 807</p>
                     </div>
                 </div>
 
@@ -24,11 +24,11 @@ const DonationInfo = () => {
                     <img
                         src="/img/scotiabank.png"
                         alt="Scotiabank Logo"
-                        className="w-12 h-12 object-contain"
+                        className="w-12 h-12 object-contain rounded-xl"
                     />
                     <div>
                         <p className="text-sm text-gray-600 font-medium">Cuenta Scotiabank:</p>
-                        <p className="text-lg font-semibold text-red-600">434283729</p>
+                        <p className="text-lg font-semibold text-red-600">**** **** ****</p>
                     </div>
                 </div>
 
