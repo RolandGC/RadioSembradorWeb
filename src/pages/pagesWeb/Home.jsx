@@ -147,7 +147,7 @@ const Home = () => {
 
     return (
         <>
-            <main className="relative z-10 ">
+            <main className="relative z-10 bg-gray-200">
                 <div className="relative w-full h-160 overflow-hidden bg-cover bg-center">
                     <video
                         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -188,15 +188,7 @@ const Home = () => {
                             <Cards3 />
                         </div>
                     </div>
-                    <div>
-                        <div className='flex justify-center mt-10'>
-                            <a href="/nosotros">
-                                <button className='inset-0 flex justify-center items-center border border-gray-400 p-2 font-urbanist hover:bg-gray-400 hover:text-white'>
-                                    Nosotros
-                                </button>
-                            </a>
-                        </div>
-                    </div>
+                    
                     {/* <div className='mt-10'>
                 <Flyer />
             </div> */}
@@ -205,8 +197,8 @@ const Home = () => {
                         {/* <Cards1 /> */}
                         <br className='m-4' />
                         <div className='p-8 slider-container '>
-                    <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-futura ">Galeria de imagenes</h2>
-                    {/* <Slider {...settings}>
+                            <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-futura ">Galeria de imagenes</h2>
+                            {/* <Slider {...settings}>
                         <div>
                             <h1> <ItemSellOk /></h1>
                         </div>
@@ -220,15 +212,15 @@ const Home = () => {
                             <h5><ItemSellOk /></h5>
                         </div>
                     </Slider> */}
-                </div>
+                        </div>
 
-                <div>
-                    <ImageGallery/>
-                </div>
+                        <div>
+                            <ImageGallery />
+                        </div>
 
-                <div>
-                    <Sponsors/>
-                </div>
+                        <div className='lg:mx-10 rounded-2xl sm:mx-5'>
+                            <Sponsors />
+                        </div>
 
                         {/* <div className='m-4'>
                     <div className=" pt-8">
@@ -271,50 +263,20 @@ const Home = () => {
                 </div> */}
                     </div>
                     <br className='' />
-                    {/* <div>
-                <div className="">
-                    <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                        <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-futura ">Más propiedades</h2>
-                        <div className='justify-end border-gray-500'>
-                            <div className=" inset-0 flex items-center justify-end text-white ">
-                                <form action="" className="flex">
-                                    <div className="font-urbanist flex items-center justify-center rounded-t bg-white m-2">
-                                        <button className=" border border-gray-600 hover:bg-greenSky hover:text-white text-gray-600  py-2 px-4 ">
-                                            En construcción
-                                        </button>
-                                        <button className="border border-gray-600 hover:bg-greenSky hover:text-white text-gray-600  py-2 px-4  ml-2">
-                                            En planos
-                                        </button>
-                                        <button className="border border-gray-600 hover:bg-greenSky hover:text-white text-gray-600 py-2 px-4 ml-2">
-                                            Entrega inmediata
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                       
-                    </div>
-                </div>
-            </div> */}
 
-                    <div className="">
-                        <div className="" >
-
-                            <div className="w-full max-w-6xl mx-auto p-4">
-                                <h2 className="text-2xl font-bold mb-4">Dónde estamos</h2>
-                                <div className="rounded-2xl overflow-hidden shadow-lg">
-                                    <iframe
-                                        title="Ubicación de la radio"
-                                        src="https://www.google.com/maps/embed?pb=..." // reemplazá esto con el que te da Google
-                                        width="100%"
-                                        height="450"
-                                        style={{ border: 0 }}
-                                        allowFullScreen
-                                        loading="lazy"
-                                        referrerPolicy="no-referrer-when-downgrade"
-                                    ></iframe>
-                                </div>
-                            </div>
+                    <div className="w-full max-w-6xl mx-auto p-4">
+                        <h2 className="text-2xl font-bold mb-4 text-center">Dónde estamos</h2>
+                        <div className="rounded-2xl overflow-hidden shadow-lg">
+                            <iframe
+                                title="Ubicación de la radio"
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2778.9070992776137!2d-70.25022655099288!3d-18.034884773828963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1744680317739!5m2!1ses-419!2spe"
+                                width="100%"
+                                height="500"
+                                style={{ border: 2 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
                         </div>
                     </div>
                 </div>

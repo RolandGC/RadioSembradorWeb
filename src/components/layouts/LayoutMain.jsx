@@ -190,25 +190,13 @@ const LayoutMain = () => {
                 </div>
             </footer>
             <div className='fixed bottom-3 right-3 z-50' >
-                <button
-                    className="
-    bg-yellow 
-    border-b-4 border-yellow-700 
-    p-5 font-futura
-    font-bold 
-    rounded-2xl 
-    text-white text-4xl 
-    shadow-gray-400 
-    hover:translate-y-[5px] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.2)] 
-    active:translate-y-[8px] active:shadow-none 
-    transition-all duration-350 ease-in-out
-  "
-                    onClick={toggleChatbot}
-                >
-                    <span>¡Donar Ahora!</span>
+                <button className='bg-yellow border-yellow-600 p-5 rounded-2xl text-white font-futura font-bold text-2xl animate-pulse shadow-md hover:shadow-lg focus:shadow-lg' onClick={toggleChatbot}>
+                    <div>
+                        <span>¡Donar Ahora!</span>
+                    </div>
                 </button>
 
-                <div className={`bg-gray-200 right-3  transition-transform duration-300 absolute top-[-410px] p-0 text-gray-600 shadow-lg ${chatBot ? 'translate-x-0' : 'translate-x-[500px]'}`}>
+                <div className={`bg-gray-200 rounded-2xl right-3  transition-transform duration-300 absolute top-[-410px] p-0 text-gray-600 shadow-lg ${chatBot ? 'translate-x-0' : 'translate-x-[500px]'}`}>
                     {/* <ChatBot /> */}
                     <DonationInfo />
                 </div>

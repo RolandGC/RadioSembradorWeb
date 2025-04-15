@@ -2,23 +2,51 @@ import React from 'react';
 
 const DonationInfo = () => {
     return (
-        <div className="w-[400px] h-[400px] bg-gradient-to-br from-gray-100 to-gray-200 rounded-md shadow-lg p-8 flex flex-col justify-center items-center">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Aportar mi ofrenda</h2>
-            <div className="space-y-4 text-center">
-                <div className="bg-white rounded-md shadow-sm p-4">
-                    <p className="font-medium text-gray-700">Número Yape:</p>
-                    <p className="text-lg text-blue-600 font-semibold">542322332</p>
+        <div className="w-80 max-w-md bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl shadow-xl p-8 flex flex-col items-center">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Aportar mi ofrenda</h2>
+
+            <div className="space-y-5 w-full">
+                {/* Yape */}
+                <div className="flex items-center bg-white rounded-xl shadow-md border border-purple-300 p-4 gap-4 hover:shadow-lg transition-all duration-300">
+                    <img
+                        src="/img/yape.jpg"
+                        alt="Yape Logo"
+                        className="w-12 h-12 object-contain"
+                    />
+                    <div>
+                        <p className="text-sm text-gray-600 font-medium">Número Yape:</p>
+                        <p className="text-lg font-semibold text-purple-700">542322332</p>
+                    </div>
                 </div>
-                <div className="bg-white rounded-md shadow-sm p-4">
-                    <p className="font-medium text-gray-700">Número de Cuenta Scotiabank:</p>
-                    <p className="text-lg text-green-600 font-semibold">434283729</p>
+
+                {/* Scotiabank */}
+                <div className="flex items-center bg-white rounded-xl shadow-md border border-red-300 p-4 gap-4 hover:shadow-lg transition-all duration-300">
+                    <img
+                        src="/img/scotiabank.png"
+                        alt="Scotiabank Logo"
+                        className="w-12 h-12 object-contain"
+                    />
+                    <div>
+                        <p className="text-sm text-gray-600 font-medium">Cuenta Scotiabank:</p>
+                        <p className="text-lg font-semibold text-red-600">434283729</p>
+                    </div>
                 </div>
-                <div className="bg-white rounded-md shadow-sm p-4">
-                    <p className="font-medium text-gray-700">Número de BCP:</p>
-                    <p className="text-lg text-red-600 font-semibold">32327793293</p>
-                </div>
-                <p className="text-sm text-gray-500 mt-4">¡Tu aporte es importante!</p>
+
+                {/* BCP */}
+                {/* <div className="flex items-center bg-white rounded-xl shadow-md border border-blue-300 p-4 gap-4 hover:shadow-lg transition-all duration-300">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_Banco_de_Credito_BCP.svg/2560px-Logo_Banco_de_Credito_BCP.svg.png"
+                        alt="BCP Logo"
+                        className="w-12 h-12 object-contain"
+                    />
+                    <div>
+                        <p className="text-sm text-gray-600 font-medium">Cuenta BCP:</p>
+                        <p className="text-lg font-semibold text-blue-600">32327793293</p>
+                    </div>
+                </div> */}
             </div>
+
+            <p className="text-sm text-gray-500 mt-6">¡Tu aporte es muy importante para nosotros!</p>
         </div>
     );
 };
