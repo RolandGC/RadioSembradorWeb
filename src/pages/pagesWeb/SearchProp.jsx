@@ -183,7 +183,7 @@ const SearchProp = () => {
                 </div>
             </div>
 
-            <h2 className="text-2xl font-bold text-gray-700 text-center p-4 font-roboto  ">Resultados : {properties.length} Inmuebles en la Zona.</h2>
+            <h2 className="text-2xl font-bold text-gray-700 text-center p-4 font-futura  ">Resultados : {properties.length} Inmuebles en la Zona.</h2>
             <div className='my-4 space-y-5'>
                 {properties.map((propertie) => (
                     <Propertie propertie={propertie} key={propertie.id} />

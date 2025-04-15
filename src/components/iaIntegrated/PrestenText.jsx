@@ -34,7 +34,7 @@ function PrestenText() {
     }, [isAnimating]);
     return (
         <div>
-            <div className=" z-10 font-roboto  text-[65px] py-14 flex flex-col items-center justify-start  h-full text-white">
+            <div className=" z-10 font-futura  text-[65px] py-14 flex flex-col items-center justify-start  h-full text-white">
                 <p className='flex flex-col items-start justify-start text-[15px] font-urbanist italic no-underline'>
                     Especialistas en:
                 </p>

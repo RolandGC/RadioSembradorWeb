@@ -120,7 +120,7 @@ const LayoutMain = () => {
                                     <Link
                                         to={link.link}
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition duration-300 ease-in-out transform hover:scale-110 hover:text-greenSky relative group"
+                                        className="text-white font-futura text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition duration-300 ease-in-out transform hover:scale-110 hover:text-greenSky relative group"
                                         key={link.id}
                                     >
                                         <span className="relative z-10">{link.text}</span>
@@ -149,7 +149,7 @@ const LayoutMain = () => {
                                     {/* <Radio className="w-6 h-6 text-yellow-400" /> */}
                                     <h3 className="text-xl font-bold">Radio Sembrador</h3>
                                 </div>
-                                <p className="text-gray-400 text-sm"> Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite Desde Tacna – Peru.</p>
+                                <p className="text-white text-sm"> Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite Desde Tacna – Peru.</p>
                             </div>
                             <div>
                                 <h4 className="font-bold mb-4">Enlaces</h4>

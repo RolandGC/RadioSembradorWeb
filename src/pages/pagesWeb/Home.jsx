@@ -158,11 +158,11 @@ const Home = () => {
                     />
 
                     <div className="relative z-10 items-center justify-center p-2 md:p-4 h-160 w-full  bg-black bg-opacity-35">
-                        <h3 className="text-[40px] font-bold  text-white  text-center p-4 pb-3 font-roboto  "><PrestenText1 /></h3>
+                        <h3 className="text-[40px] font-bold  text-white  text-center p-4 pb-3 font-futura  "><PrestenText1 /></h3>
                         <div className="m-14">
                             <div className="flex items-center justify-center text-white sm:w-full">
                                 <form action="" className="flex">
-                                    <div className="font-normal flex items-center justify-center gap-x-2 bg-white font-roboto  rounded-sm">
+                                    <div className="font-normal flex items-center justify-center gap-x-2 bg-white font-futura  rounded-sm">
 
                                     </div>
                                 </form>
@@ -205,7 +205,7 @@ const Home = () => {
                         {/* <Cards1 /> */}
                         <br className='m-4' />
                         <div className='p-8 slider-container '>
-                    <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-roboto ">Galeria de imagenes</h2>
+                    <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-futura ">Galeria de imagenes</h2>
                     {/* <Slider {...settings}>
                         <div>
                             <h1> <ItemSellOk /></h1>
@@ -232,14 +232,14 @@ const Home = () => {
 
                         {/* <div className='m-4'>
                     <div className=" pt-8">
-                        <h4 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-roboto ">Integrado con inteligencia artificial</h4>
+                        <h4 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-futura ">Integrado con inteligencia artificial</h4>
                     </div>
                     <div className="mx-auto max-w-7xl  px-6 lg:px-8 m-3">
                         <ul role="list" className="grid gap-8 md:gap-6  md:grid-cols-3 lg:gap-8 border-gray-300">
                             <li className='max-w-[450px] mx-auto md:w-auto'>
                                 <div className="flex p-5 md:p-4 md:pr-1 lg:p-5 items-center gap-x-1 border border-gray-400 bg-white shadow-md">
                                     <div >
-                                        <p className="text-sm leading-6 text-gray-700 font-roboto ">Navega por nuestra página web inteligente, donde la IA anticipa tus necesidades.</p>
+                                        <p className="text-sm leading-6 text-gray-700 font-futura ">Navega por nuestra página web inteligente, donde la IA anticipa tus necesidades.</p>
                                     </div>
                                     <a href="/ia/inicioia" className='rounded-full px-3 py-[13px] bg-greenSky'>
                                         <FaArrowRight className='h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 rounded-full m-3' />
@@ -249,7 +249,7 @@ const Home = () => {
                             <li className='max-w-[450px] mx-auto md:w-auto'>
                                 <div className="flex p-5 md:p-4 md:pr-1 lg:p-5 items-center gap-x-1 border border-gray-400 bg-white shadow-md">
                                     <div >
-                                        <p className="text-sm font-semibold leading-6 text-gray-700 font-roboto ">Experimenta la diferencia con nuestra página web, potenciada por inteligencia artificial.</p>
+                                        <p className="text-sm font-semibold leading-6 text-gray-700 font-futura ">Experimenta la diferencia con nuestra página web, potenciada por inteligencia artificial.</p>
                                     </div>
                                     <a href="/ia/inicioia" className='rounded-full px-3 py-[13px] bg-greenSky'>
                                         <FaArrowRight className=' h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 rounded-full m-3' />
@@ -259,7 +259,7 @@ const Home = () => {
                             <li className='max-w-[450px] mx-auto md:w-auto'>
                                 <div className="flex p-5 md:p-4 md:pr-1 lg:p-5 items-center gap-x-1 border border-gray-400 bg-white shadow-md">
                                     <div >
-                                        <p className="text-sm font-semibold leading-6 text-gray-700 font-roboto ">Explora un nuevo nivel de interactividad con nuestra página web impulsada por IA.</p>
+                                        <p className="text-sm font-semibold leading-6 text-gray-700 font-futura ">Explora un nuevo nivel de interactividad con nuestra página web impulsada por IA.</p>
                                     </div>
                                     <a href="/ia/inicioia" className='rounded-full px-3 py-[13px] bg-greenSky'>
                                         <FaArrowRight className='h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 rounded-full m-3' />
@@ -274,7 +274,7 @@ const Home = () => {
                     {/* <div>
                 <div className="">
                     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                        <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-roboto ">Más propiedades</h2>
+                        <h2 className="text-[45px] font-bold  text-gray-700 text-center p-4 font-futura ">Más propiedades</h2>
                         <div className='justify-end border-gray-500'>
                             <div className=" inset-0 flex items-center justify-end text-white ">
                                 <form action="" className="flex">
