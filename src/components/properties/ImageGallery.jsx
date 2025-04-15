@@ -66,14 +66,14 @@ const ImageGallery = ({ imageUrls }) => {
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 h-full">
                                 <div className="col-span-2 sm:col-span-1 md:col-span-2 bg-gray-50 h-auto md:h-full flex flex-col">
                                     <div onClick={() => openModal(0)} className="group relative flex flex-col overflow-hidden  px-4 pb-4 pt-40 flex-grow">
-                                        <img alt="" src={'/public/img/logoVertical.png'} className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
+                                        <img alt="" src={'/img/logoVertical.png'} className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
                                         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
                                         <h3 className="z-10 text-2xl font-medium text-white absolute top-0 left-0 p-4 xs:text-xl md:text-3xl">foto1</h3>
                                     </div>
                                 </div>
                                 <div className="col-span-2 sm:col-span-1 md:col-span-2 bg-stone-50">
                                     <div onClick={() => openModal(1)} className="group relative flex flex-col overflow-hidden px-4 pb-4 pt-40 mb-4">
-                                        <img alt="" src={'/public/img/wallperRadio.jpg'} className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
+                                        <img alt="" src={'/img/wallperRadio.jpg'} className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
                                         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
                                         <h3 className="z-10 text-2xl font-medium text-white absolute top-0 left-0 p-4 xs:text-xl md:text-3xl">foto2</h3>
                                     </div>

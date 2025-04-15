@@ -15,6 +15,7 @@ export default {
             colors: {
                 blue2: '#174966',
                 greenSky: '#00ac9e',
+                yellow: '#fcc040'
             },
             spacing: {
                 '200': '50rem',
