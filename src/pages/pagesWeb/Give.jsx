@@ -14,9 +14,15 @@ export default function DonacionComponent() {
 
     const bancos = [
         {
-            nombre: 'Scotiabank',
-            cuenta: '**** **** ****',
-            cci: '**** **** ****',
+            nombre: 'Scotiabank en soles',
+            cuenta: '740-7250724',
+            cci: '009-417-207407250724-70',
+            logo: scotiabank,
+        },
+        {
+            nombre: 'Scotiabank en dólares',
+            cuenta: '740-7217134',
+            cci: '009-417-217407217134-72',
             logo: scotiabank,
         },
         // {
@@ -80,18 +86,18 @@ export default function DonacionComponent() {
                     >
                         Transferencia Bancaria
                     </button>
-                    <button
+                    {/* <button
                         onClick={() => setActiveTab('movil')}
                         className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${activeTab === 'movil' ? 'bg-white/20 text-white shadow-lg' : 'text-white/70 hover:bg-white/5'}`}
                     >
                         Yape / Plin
-                    </button>
-                    <button
+                    </button> */}
+                    {/* <button
                         onClick={() => setActiveTab('proposito')}
                         className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${activeTab === 'proposito' ? 'bg-white/20 text-white shadow-lg' : 'text-white/70 hover:bg-white/5'}`}
                     >
                         Propósito
-                    </button>
+                    </button> */}
                 </div>
             </div>
 
@@ -105,7 +111,7 @@ export default function DonacionComponent() {
                                 <div key={index} className="bg-white/10 rounded-lg p-4 transition-all hover:bg-white/15">
                                     <div className="flex items-center mb-4">
                                         <div className="w-36 h-36 bg-white/80 flex items-center justify-center rounded-xl mr-3">
-                                            <img src={banco.logo} alt={`Logo de ${banco.nombre}`} className="max-h-30 rounded-xl" />
+                                            <img src={banco.logo} alt={`Logo de ${banco.nombre}`} className="max-h-36 max-w-36 rounded-xl" />
                                         </div>
                                         <h3 className="text-xl font-semibold">{banco.nombre}</h3>
                                     </div>
@@ -145,7 +151,7 @@ export default function DonacionComponent() {
                     </div>
                 )}
 
-                {activeTab === 'movil' && (
+                {/* {activeTab === 'movil' && (
                     <div>
                         <p className="text-center mb-6">Realiza tu donación de manera rápida y sencilla mediante estas aplicaciones:</p>
 
@@ -176,9 +182,9 @@ export default function DonacionComponent() {
                             ))}
                         </div>
                     </div>
-                )}
+                )} */}
 
-                {activeTab === 'proposito' && (
+                {/* {activeTab === 'proposito' && (
                     <div className="space-y-4">
                         <h3 className="text-xl font-semibold mb-2">¿Por qué donar a Radio Sembrador?</h3>
                         <p>Tu contribución ayuda a que sigamos llevando el mensaje de esperanza a miles de personas. Con tu apoyo podemos:</p>
@@ -206,11 +212,11 @@ export default function DonacionComponent() {
                             <p className="italic">"Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre." - 2 Corintios 9:7</p>
                         </div>
                     </div>
-                )}
+                )} */}
             </div>
 
             <div className="mt-8 text-center text-white/70 text-sm">
-                <p>Para más información sobre donaciones, contáctanos al: <span className="text-white">info@radiosembrador.org</span></p>
+                <p>Para más información sobre donaciones, contáctanos al: <span className="text-white">radiosembrador.info@gmail.com</span></p>
             </div>
         </div>
     );
