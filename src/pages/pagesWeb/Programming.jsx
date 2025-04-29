@@ -4,13 +4,13 @@ import logo2 from "/public/img/building.jpg";
 
 export default function Programming() {
     const diasSemana = [
-        { dia: "Lunes", fecha: "14 ABR" },
-        { dia: "Martes", fecha: "15 ABR" },
-        { dia: "Miércoles", fecha: "16 ABR" },
-        { dia: "Jueves", fecha: "17 ABR" },
-        { dia: "Viernes", fecha: "18 ABR" },
-        { dia: "Sábado", fecha: "19 ABR" },
-        { dia: "Domingo", fecha: "20 ABR" },
+        { dia: "Lunes", fecha: "28 ABR" },
+        { dia: "Martes", fecha: "29 ABR" },
+        { dia: "Miércoles", fecha: "30 ABR" },
+        { dia: "Jueves", fecha: "01 MAY" },
+        { dia: "Viernes", fecha: "02 MAY" },
+        { dia: "Sábado", fecha: "03 MAY" },
+        { dia: "Domingo", fecha: "04 MAY" },
     ];
 
     const [diaSeleccionado, setDiaSeleccionado] = useState(0);
@@ -159,12 +159,33 @@ export default function Programming() {
         5: [ // Sábado
             { hora: "00:00", nombre: "MÚSICA DE ADORACIÓN", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
             { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
-            { hora: "03:00", nombre: "ESCUELA SABÁTICA", locutor: "Pastor Mateo", imagen: "/api/placeholder/80/80" },
+            { hora: "03:00", nombre: "ESCUELA SABÁTICA", locutor: "", imagen: "/api/placeholder/80/80" },
         ],
         6: [ // Domingo
-            { hora: "00:00", nombre: "AMANECER DEL DOMINGO", locutor: "Pastor Marcos", imagen: "/api/placeholder/80/80" },
-            { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
-            { hora: "03:00", nombre: "HISTORIAS BÍBLICAS", locutor: "Hermano Lucas", imagen: "/api/placeholder/80/80" },
+            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "10:00", nombre: "IGLESIA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
+            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
         ],
     };
 
