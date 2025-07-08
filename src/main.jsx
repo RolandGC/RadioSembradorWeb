@@ -16,15 +16,11 @@ import UserActivity from './pages/pagesUser/UserActivity'
 import { UserAccount } from './pages/pagesUser/UserAccount'
 
 import LayoutAdmin from './components/layouts/LayoutAdmin'
-import Properties from './pages/pagesAdmin/Properties'
 import { DetailProperties } from './pages/pagesAdmin/DetailProperties'
 import ListMessages from './pages/pagesAdmin/ListMessages'
 import Users from './pages/pagesAdmin/Users'
 
-import LayoutAI from './components/layouts/LayoutAI'
-import HomeAI from './pages/pagesAI/HomeAI'
 import SignIn from './pages/auth/SignIn'
-import IA from './pages/pagesWeb/IA'
 
 // contexts
 import { UserProvider } from './context/UserProvider'
@@ -38,6 +34,7 @@ import ProtectedRoutes from './components/protected/ProtectedRoutes'
 import Us from './pages/pagesWeb/Us'
 import Programming from './pages/pagesWeb/Programming'
 import Give from './pages/pagesWeb/Give'
+import { Program } from './pages/pagesAdmin/Program'
 
 
 const router = createBrowserRouter(
@@ -58,10 +55,6 @@ const router = createBrowserRouter(
         {
           element: <Blog />,
           path: '/blog'
-        },
-        {
-          element: <IA />,
-          path: '/ia'
         },
         {
           element: <Contact />,
@@ -92,7 +85,7 @@ const router = createBrowserRouter(
     },
     {
       path: '/admin',
-      element: <ProtectedRoutes role={1}><LayoutAdmin /></ProtectedRoutes>,
+      element: <ProtectedRoutes><LayoutAdmin /></ProtectedRoutes>,
       children: [
         {
           index: true,
@@ -100,8 +93,8 @@ const router = createBrowserRouter(
           path: 'dashboard'
         },
         {
-          element: <Properties />,
-          path: 'propiedades'
+          element: <Program />,
+          path: 'programming'
         },
         {
           element: <DetailProperties />,
@@ -122,45 +115,6 @@ const router = createBrowserRouter(
         }
       ]
     },
-    {
-      path: '/usuario',
-      element: <ProtectedRoutes role={2}><LayoutUser /></ProtectedRoutes>,
-      children: [
-        {
-          element: <UserAccount />,
-          path: 'cuenta',
-          index: true,
-        },
-        {
-          element: <Post />,
-          path: 'publicar'
-        },
-        {
-          element: <UserActivity />,
-          path: 'actividad'
-        },
-        {
-          path: "*",
-          element: <Navigate to="/usuario/cuenta" replace />
-        }
-      ]
-    },
-    {
-      path: '/ia',
-      element: <LayoutAI />,
-      children: [
-        {
-          index: true,
-          element: <HomeAI />,
-          path: 'inicioia'
-        },
-        // {
-        //   element: <MyActivity />,
-        //   path: 'actividad'
-        // },
-      ]
-    },
-
   ]
 )
 

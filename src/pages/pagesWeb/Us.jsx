@@ -4,29 +4,31 @@ import { SlRocket } from "react-icons/sl"
 import { FaHouseUser } from "react-icons/fa"
 import consola from '/public/img/consola.webp';
 import { GiBullseye } from "react-icons/gi";
+import { supabase } from '../../services/supabase';
 
 const Us = () => {
 
-    const properties = [
-        {
-            id: 1,
-            href: '/item',
-            imageSrc: '/public/img/daniel.jpeg',
-            imageAlt: "Front of men's Basic Tee in black.",
-            title: 'Adminstrador',
-            name: 'Julio Mamani',
-            buttonColor: 'bg-red-500'
-        },
-        {
-            id: 2,
-            href: '/item',
-            imageSrc: '/public/img/back.jpeg',
-            imageAlt: "Front of men's Basic Tee in black.",
-            title: 'Coordinador',
-            name: 'Javier alanoca',
-            buttonColor: 'bg-red-500'
-        },
-    ]
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchProducts = async () => {
+        const { data, error } = await supabase.from('text1').select('*');
+        if (error) {
+            console.error('Error al obtener productos:', error);
+        } else {
+            setProducts(data);
+        }
+        setLoading(false);
+    };
+
+    console.log(products)
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+    const record = products.find(p => p.id === 1);
+
+
     return (
         <div className='sm:px-4 lg:px-6 rounded-xl' >
             <h1 className='text-[40px] font-bold font-futura text-center'>Nosotros</h1>
@@ -46,7 +48,8 @@ const Us = () => {
                                 </h1>
 
                                 <p className="mt-4 max-w-lg sm:text-xl/relaxed text-white">
-                                    Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite desde Tacna – Peru.
+                                    {record?.text}
+                                    {/* Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite desde Tacna – Peru. */}
                                 </p>
                             </div>
                         </div>
@@ -66,7 +69,7 @@ const Us = () => {
                                 <div>
                                     <h3 className="text-2xl font-bold text-gray-900 font-futura">Misión</h3>
                                     <p className="text-base font-urbanist text-gray-600 mt-2">
-                                        Somos sembradores de la palabra.
+                                        {record?.mision}
                                     </p>
                                 </div>
                             </div>
@@ -80,7 +83,7 @@ const Us = () => {
                                 <div>
                                     <h3 className="text-2xl font-bold text-gray-900 font-futura">Visión</h3>
                                     <p className="text-base font-urbanist text-gray-600 mt-2">
-                                        Ser una Radio que dé gloria a Dios.
+                                        {record?.vision}
                                     </p>
                                 </div>
                             </div>

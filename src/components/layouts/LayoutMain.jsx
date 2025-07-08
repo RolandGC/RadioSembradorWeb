@@ -190,7 +190,7 @@ const LayoutMain = () => {
                 </div>
             </footer>
             <div className='fixed bottom-3 right-3 z-50' >
-                <button className='bg-yellow border-yellow-600 p-5 rounded-2xl text-white font-futura font-bold text-2xl animate-pulse shadow-md hover:shadow-lg focus:shadow-lg' onClick={toggleChatbot}>
+                <button className='bg-yellow border-yellow-600 p-3 rounded-2xl text-white font-futura font-bold text-xl animate-pulse shadow-md hover:shadow-lg focus:shadow-lg' onClick={toggleChatbot}>
                     <div>
                         <span>¡Donar Ahora!</span>
                     </div>

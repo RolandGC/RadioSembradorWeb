@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Copy, Check, Heart } from 'lucide-react';
 //import scotiabank from '/public/img/scotiabank.png'
 import scotiabank from '/public/img/scotiabank.png'; 
@@ -7,10 +7,33 @@ import Interbank from '/public/img/interbank.png';
 import BBVA from '/public/img/bbva.png'; 
 import yapeLogo from '/public/img/yape.jpg';
 import plinLogo from '/public/img/plin.jpg';
+import { supabase } from '../../services/supabase';
 
 export default function DonacionComponent() {
     const [activeTab, setActiveTab] = useState('bancos');
     const [copiedAccount, setCopiedAccount] = useState(null);
+    const [banks, setBanks] = useState([]);
+
+    const fetchBanks = async () => {
+        const { data, error } = await supabase.from('give').select('*');
+        if (error) {
+            console.error('Error al obtener bancos:', error);
+        } else {
+            setBanks(data);
+        }
+        setLoading(false);
+    };
+
+    console.log(banks)
+
+    useEffect(() => {
+        fetchBanks();
+    }, []);
+    const bank1 = banks.find(p => p.id === 1);
+    const bank2 = banks.find(p => p.id === 2);
+    console.log('bnk1', bank1)
+
+
 
     const bancos = [
         {
@@ -107,39 +130,39 @@ export default function DonacionComponent() {
                         <p className="text-center mb-6">Selecciona uno de nuestros bancos para realizar tu donación mediante transferencia:</p>
 
                         <div className="grid md:grid-cols-2 gap-4">
-                            {bancos.map((banco, index) => (
+                            {banks.map((banco, index) => (
                                 <div key={index} className="bg-white/10 rounded-lg p-4 transition-all hover:bg-white/15">
                                     <div className="flex items-center mb-4">
                                         <div className="w-36 h-36 bg-white/80 flex items-center justify-center rounded-xl mr-3">
-                                            <img src={banco.logo} alt={`Logo de ${banco.nombre}`} className="max-h-36 max-w-36 rounded-xl" />
+                                            <img src={scotiabank} alt={`Logo de ${banco.nombre}`} className="max-h-36 max-w-36 rounded-xl" />
                                         </div>
-                                        <h3 className="text-xl font-semibold">{banco.nombre}</h3>
+                                        <h3 className="text-xl font-semibold">{banco.nameBank}</h3>
                                     </div>
 
                                     <div className="space-y-3">
                                         <div>
                                             <div className="text-xs text-white/70 mb-1">Número de Cuenta:</div>
                                             <div className="flex items-center justify-between bg-white/5 rounded-md p-2">
-                                                <div className="font-mono">{banco.cuenta}</div>
+                                                <div className="font-mono">{banco.code}</div>
                                                 <button
-                                                    onClick={() => copyToClipboard(banco.cuenta, `${banco.nombre}-cuenta`)}
+                                                    onClick={() => copyToClipboard(banco.cuenta, `${banco.nameBank}-cuenta`)}
                                                     className="text-white/70 hover:text-white"
                                                 >
-                                                    {copiedAccount === `${banco.nombre}-cuenta` ? <Check size={18} /> : <Copy size={18} />}
+                                                    {copiedAccount === `${banco.nameBank}-cuenta` ? <Check size={18} /> : <Copy size={18} />}
                                                 </button>
                                             </div>
                                         </div>
 
-                                        {banco.cci && (
+                                        {banco.externalCode && (
                                             <div>
                                                 <div className="text-xs text-white/70 mb-1">CCI:</div>
                                                 <div className="flex items-center justify-between bg-white/5 rounded-md p-2">
-                                                    <div className="font-mono">{banco.cci}</div>
+                                                    <div className="font-mono">{banco.externalCode}</div>
                                                     <button
-                                                        onClick={() => copyToClipboard(banco.cci, `${banco.nombre}-cci`)}
+                                                        onClick={() => copyToClipboard(banco.cci, `${banco.nameBank}-cci`)}
                                                         className="text-white/70 hover:text-white"
                                                     >
-                                                        {copiedAccount === `${banco.nombre}-cci` ? <Check size={18} /> : <Copy size={18} />}
+                                                        {copiedAccount === `${banco.nameBank}-cci` ? <Check size={18} /> : <Copy size={18} />}
                                                     </button>
                                                 </div>
                                             </div>

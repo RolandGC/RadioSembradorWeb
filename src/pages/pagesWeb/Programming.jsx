@@ -1,193 +1,72 @@
-
 import { useEffect, useState } from 'react';
-import logo2 from "/public/img/building.jpg";
+import { supabase } from '../../services/supabase';
 
 export default function Programming() {
-    const diasSemana = [
-        { dia: "Lunes", fecha: "28 ABR" },
-        { dia: "Martes", fecha: "29 ABR" },
-        { dia: "Miércoles", fecha: "30 ABR" },
-        { dia: "Jueves", fecha: "01 MAY" },
-        { dia: "Viernes", fecha: "02 MAY" },
-        { dia: "Sábado", fecha: "03 MAY" },
-        { dia: "Domingo", fecha: "04 MAY" },
-    ];
-
+    const [diasSemana, setDiasSemana] = useState([]);
     const [diaSeleccionado, setDiaSeleccionado] = useState(0);
     const [horaActual, setHoraActual] = useState(null);
+    const [programmingData, setProgrammingData] = useState([]);
+
+    // Generar días y seleccionar el día actual automáticamente
+    useEffect(() => {
+        const formatterDia = new Intl.DateTimeFormat('es-PE', { weekday: 'long', timeZone: 'America/Lima' });
+        const formatterFecha = new Intl.DateTimeFormat('es-PE', { day: '2-digit', month: 'short', timeZone: 'America/Lima' });
+
+        const base = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Lima' }));
+        const hoyIndex = base.getDay(); // 0 = domingo, 1 = lunes, ..., 6 = sábado
+
+        // Generar 7 días desde domingo a sábado (0 a 6)
+        const dias = Array.from({ length: 7 }).map((_, i) => {
+            const date = new Date(base);
+            const diff = i - hoyIndex;
+            date.setDate(base.getDate() + diff);
+
+            const diaTexto = formatterDia.format(date);
+            const fechaTexto = formatterFecha.format(date).toUpperCase().replace('.', '');
+            return {
+                dia: diaTexto.charAt(0).toUpperCase() + diaTexto.slice(1),
+                fecha: fechaTexto,
+            };
+        });
+
+        setDiasSemana(dias);
+        setDiaSeleccionado(hoyIndex);
+    }, []);
+
 
     useEffect(() => {
-        // Obtener hora actual en la zona horaria de Perú
         const fecha = new Date().toLocaleString("en-US", { timeZone: "America/Lima" });
         const hora = new Date(fecha).getHours();
         setHoraActual(hora);
     }, []);
 
-    const programacion = {
-        0: [ // Lunes
-            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "10:00", nombre: "IGLESIA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
+    const fetchProgramming = async () => {
+        const { data, error } = await supabase
+            .from('programming')
+            .select('*')
+            .order('id', { ascending: true });
 
-        ],
-        1: [ // Martes
-            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "10:00", nombre: "IGLESIA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-        ],
-        // Programación para los demás días...
-        2: [ // Miércoles
-            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "10:00", nombre: "IGLESIA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-        ],
-        3: [ // Jueves
-            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "10:00", nombre: "IGLESIA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-        ],
-        4: [ // Viernes
-            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "10:00", nombre: "IGLESIA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-        ],
-        5: [ // Sábado
-            { hora: "00:00", nombre: "MÚSICA DE ADORACIÓN", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
-            { hora: "01:00", nombre: "MÚSICA CONTINUA", locutor: "Radio Sembrador", imagen: "/api/placeholder/80/80" },
-            { hora: "03:00", nombre: "ESCUELA SABÁTICA", locutor: "", imagen: "/api/placeholder/80/80" },
-        ],
-        6: [ // Domingo
-            { hora: "00:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "01:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "02:00", nombre: "CONTEXTO BIBLICO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "03:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "04:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "05:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "06:00", nombre: "CLASIFICACION A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "07:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "08:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "09:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "10:00", nombre: "IGLESIA EVANGELIA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "11:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "12:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "13:00", nombre: "CORRER PARA GANAR", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "14:00", nombre: "AVIVA NUESTROS CORAZONES", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "15:00", nombre: "CONTEXTO BIBLIBO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "16:00", nombre: "IGLESIA EVANGELICA DE LA GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "17:00", nombre: "MINISTERIO EN CONTACTO", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "18:00", nombre: "CHARLES SPURGEON", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "19:00", nombre: "CLASIFICACIÓN A", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "20:00", nombre: "PALABRAS DE GRACIA", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "21:00", nombre: "CRIANZA REVERENTE", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "22:00", nombre: "GRACIA A VOSOTROS", locutor: "", imagen: "/img/logoVertical.png" },
-            { hora: "23:00", nombre: "EL FARO DE REDENCION", locutor: "", imagen: "/img/logoVertical.png" },
-        ],
+        if (error) {
+            console.error('Error al obtener programación:', error.message);
+        } else {
+            setProgrammingData(data);
+        }
     };
+
+    useEffect(() => {
+        fetchProgramming();
+    }, []);
+
+    const groupedByDay = {
+        0: programmingData.filter(p => p.id < 25), // domingo
+        1: programmingData.filter(p => p.id < 25), // lunes
+        2: programmingData.filter(p => p.id < 25), // martes
+        3: programmingData.filter(p => p.id < 25), // miércoles
+        4: programmingData.filter(p => p.id < 25), // jueves
+        5: programmingData.filter(p => p.id < 25), // viernes
+        6: programmingData.filter(p => p.id >= 25), // sábado
+    };
+
 
     const esProgramaActual = (horaProgramada) => {
         if (horaActual === null) return false;
@@ -202,7 +81,7 @@ export default function Programming() {
                 <h2 className="text-xl text-gray-600">Radio Sembrador</h2>
             </div>
 
-            {/* Barra de navegación de días */}
+            {/* Navegación de días */}
             <div className="flex overflow-x-auto mb-8">
                 {diasSemana.map((item, index) => (
                     <div
@@ -224,28 +103,42 @@ export default function Programming() {
                 ))}
             </div>
 
-            {/* Programas del día */}
+            {/* Lista de programas */}
             <div className="space-y-4">
-                {programacion[diaSeleccionado].map((programa, index) => {
-                    const actual = esProgramaActual(programa.hora);
+                {(groupedByDay[diaSeleccionado] || []).map((programa, index) => {
+                    const actual = esProgramaActual(programa.timeStart);
                     return (
                         <div
-                            key={index}
+                            key={programa.id || index}
                             className={`rounded shadow-sm overflow-hidden transition-all duration-300 ${actual ? 'bg-green-100 border-l-4 border-greenSky' : 'bg-white'
                                 }`}
                         >
                             <div className="flex items-center p-4">
                                 <div className="flex-shrink-0 rounded-full overflow-hidden">
-                                    <img src={programa.imagen} alt={programa.nombre} className="w-20 h-20 object-cover" />
+                                    <img
+                                        src={programa.image || "/img/logoVertical.png"}
+                                        alt={programa.name}
+                                        className="w-20 h-20 object-cover"
+                                    />
                                 </div>
                                 <div className="ml-6 flex-grow">
                                     <h3 className={`text-xl font-bold uppercase ${actual ? 'text-greenSky' : ''}`}>
-                                        {programa.nombre}
+                                        {programa.name}
                                     </h3>
-                                    <p className="text-gray-600">{programa.locutor}</p>
+                                    <p className="text-gray-600">{programa.description || ''}</p>
                                 </div>
+                                {programa.newProgram && (
+                                    <div className='w-40 bg-green-200 p-3 m-1 text-sm rounded-md'>
+                                        Nuevo programa
+                                    </div>
+                                )}
+                                {programa.endProgram && (
+                                    <div className='w-40 bg-red-200 p-3 m-1 text-sm rounded-md'>
+                                        Programa próximo a acabar
+                                    </div>
+                                )}
                                 <div className="text-gray-300 text-5xl font-light">
-                                    {programa.hora}
+                                    {programa.timeStart}
                                 </div>
                             </div>
                         </div>

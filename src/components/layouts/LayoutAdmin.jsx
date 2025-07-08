@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
 import { BiMenuAltLeft } from "react-icons/bi";
 import { FaTiktok } from "react-icons/fa";
@@ -11,35 +11,26 @@ import { BiSolidPhoneCall } from "react-icons/bi";
 import { MdLogin } from "react-icons/md"
 import { BiSolidChat } from "react-icons/bi"
 import { FaPlus } from "react-icons/fa6";
-import { SiWechat } from "react-icons/si";
-import ChatBot from '../compGeneral/ChatBot';
 import Loading from '../compGeneral/Loading';
+import logo2 from '/public/img/logo2.png'
+import { FaWhatsapp } from 'react-icons/fa';
+import useUser from '../../hooks/useUser'; // ajusta la ruta si es diferente
 
 const links = [
     {
-        link: "/",
-        text: "INICIO",
-        id: 1,
-    },
-    {
         link: "dashboard",
-        text: "PANEL",
+        text: "Nosotros",
         id: 2,
     },
     {
-        link: "propiedades",
-        text: "PROPIEDADES",
+        link: "programming",
+        text: "Programación",
         id: 3,
     },
     {
         link: "usuarios",
         text: "USUARIOS",
         id: 4,
-    },
-    {
-        link: "mensajes",
-        text: "MENSAJES",
-        id: 5,
     },
 ];
 
@@ -48,6 +39,14 @@ const LayoutAdmin = () => {
     const [isLgScreen, setIsLgScreen] = useState(window.innerWidth >= 1024);
     const [isLoading, setIsLoading] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
+    const { logout } = useUser();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await logout();
+        navigate("/login");
+    }
+
 
     const handleMouseEnter = () => {
         setIsOpen(true);
@@ -96,188 +95,117 @@ const LayoutAdmin = () => {
 
     return (
         <>
-            {
-                isLoading ? (
-                    <Loading />
-                ) : (
-                    <div>
-                        <div className="flex justify-between items-center px-5 md:px-8">
-                            <div className="flex items-center pl-8">
-                                <Link to={"/"} className="text-white flex justify-start items-center font-semibold text-xl h-24 pr-4">
-                                    <img src="/public/img/logo.png" alt="" width="170" height="120" />
-                                </Link>
-                                <div
-                                    className={`absolute ${isMenuOpen ? 'flex' : 'hidden'} h-screen z-30 bg-black bg-opacity-75 top-0 bottom-0 left-0 flex lg:flex right-0 justify-center items-center gap-5  font-bold p-3 lg:p-0 lg:static lg:bg-transparent lg:h-auto`}
-                                >
-                                    {
-                                        isMenuOpen ? (
-                                            <button
-                                                onClick={() => setIsMenuOpen(false)} className='bg-red-600 absolute top-5 right-5 rounded-full transition-colors duration-300 hover:bg-red-800  p-3'
-                                            >
-                                                <AiOutlineClose className='text-white text-2xl font-bold' />
-                                            </button>
-                                        ) : null
-                                    }
-                                    <div className='flex flex-col gap-10 lg:gap-5 lg:flex-row'>
-                                        {links.map(link => (
-                                            <Link
-                                                to={link.link}
-                                                onClick={() => setIsMenuOpen(false)}
-                                                className="text-white text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition-opacity duration-300 hover:text-green-500 hover:opacity-75 font-futura "
-                                                key={link.id}
-                                            >
-                                                {link.text}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                                <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                                    {isMenuOpen ? <AiOutlineClose className="text-[35px] text-gray-500" /> : <AiOutlineMenu className="text-[35px] text-gray-500" />}
-                                </button>
-                            </div>
-                            <div className='flex flex-col md:flex-row'>
-                                <a href="/publicar/formulario">
-                                    <button className="bg-white hover:bg-green-500 hover:text-white m-2 p-2 items-center flex text-gray-700 border border-green-500 justify-center z-60">
-                                        <FaPlus />
-                                        <p className="pl-1 text-sm font-urbanist">Publicar</p>
-                                    </button>
-                                </a>
-                                <a href="/login">
-                                    <button className="bg-green-500 hover:bg-gray-400 m-2 p-2 items-center flex text-white justify-center z-60"
-                                        onMouseEnter={handleMouseEnter}
-                                        onMouseLeave={handleMouseLeave}
+
+            <div>
+                <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md px-5 md:px-0 bg-[#66524c]">
+                    <div className="flex items-center justify-center lg:justify-start pl-0  w-full h-[70px]">
+                        <Link
+                            to="/"
+                            className="text-white flex justify-start items-center lg:pl-8 font-semibold text-xl h-[70px] pr-16 group hover:bg-gray-200"
+                        >
+                            <img
+                                src={logo2}
+                                alt="Logo"
+                                width="100"
+                                height="40"
+                                className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+                            />
+                        </Link>
+                        <div
+                            className={`absolute ${isMenuOpen ? 'flex' : 'hidden'} h-screen z-30 bg-black bg-opacity-75 top-0 bottom-0 left-0 flex lg:flex right-0 justify-center items-center gap-5  font-bold p-3 lg:p-0 lg:static lg:bg-transparent lg:h-auto`}
+                        >
+                            {
+                                isMenuOpen ? (
+                                    <button
+                                        onClick={() => setIsMenuOpen(false)} className='bg-red-600 absolute top-5 right-5 rounded-full transition-colors duration-300 hover:bg-red-800  p-3'
                                     >
-                                        <MdLogin className="text-2xl" />
-                                        <p className="pl-1 text-sm font-urbanist">Iniciar sesión</p>
+                                        <AiOutlineClose className='text-white text-2xl font-bold' />
                                     </button>
-                                    {isOpen && (
-                                        <div
-                                            onMouseEnter={handleMouseEnter}
-                                            onMouseLeave={handleMouseLeave}
-                                            className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                        >
-                                            <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                                                <a
-                                                    href="#iniciar-sesion"
-                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                                    role="menuitem"
-                                                >
-                                                    Iniciar sesión
-                                                </a>
-                                                <a
-                                                    href="#registrarse"
-                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                                    role="menuitem"
-                                                >
-                                                    Registrarse
-                                                </a>
-                                            </div>
-                                        </div>
-                                    )}
-                                </a>
+                                ) : null
+                            }
+                            <div className='flex flex-col gap-10 lg:gap-10 lg:flex-row '>
+                                {links.map(link => (
+                                    <Link
+                                        to={link.link}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="text-white font-futura text-3xl lg:text-gray-700 font-bold lg:text-[20px] transition duration-300 ease-in-out transform hover:scale-110 hover:text-greenSky relative group"
+                                        key={link.id}
+                                    >
+                                        <span className="relative z-10">{link.text}</span>
+                                        <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-greenSky transition-all duration-300 group-hover:w-full"></span>
+                                    </Link>
+
+                                ))}
                             </div>
                         </div>
+                        <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                            {isMenuOpen ? <AiOutlineClose className="text-[35px] text-gray-500" /> : <AiOutlineMenu className="text-[35px] text-gray-500" />}
+                        </button>
+                    </div>
+                    <div className="absolute right-5 top-5">
+                        <button
+                            onClick={handleLogout}
+                            className="bg-red-500 hover:bg-red-700 text-white text-sm font-bold py-2 px-4 rounded"
+                        >
+                            Cerrar sesión
+                        </button>
+                    </div>
 
-                        <main className='bg-gray-200 '>
-                            <Outlet />
-                        </main>
+                </div>
 
-                        <footer >
-                            {/* <div className='text-center inset-x-0 flex justify-center bg-white p-4'>
-                    <ul className='justify-center flex text-green-500 text-3xl bg-white p-4 shadow-md shadow-green-500  pl-10 pr-10 '>
-                        <li>
-                            <FaFacebookF className="ml-1 " />
-                        </li>
-                        <li>
-                            <FaYoutube className="ml-8" />
-                        </li>
-                        <li>
-                            <FaTiktok className="ml-8" />
-                        </li>
-                        <li>
-                            <FaInstagram className="ml-8" />
-                        </li>
-                    </ul>
-                </div> */}
-                            <div className=' bg-white'>
-                                <div className='bg-white mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-8 p-14'>
-                                    <div className='flex bg-white'>
-                                        <div className='flex-1 font-josefin '>
-                                            <p className='text-gray-700 font-futura  font-bold mb-2'>CasaPaz Inmobiliaria</p>
-                                            <span className='text-gray-400 font-urbanist'>La Inmobiliaria es un nuevo e innovador Portal Inmobiliario donde podrá encontrar el inmueble que necesita.</span>
-                                        </div>
-                                    </div>
-                                    <div className='bg-white text-gray-400 text-sm flex-1 font-urbanist'>
-                                        <p className='text-gray-700 font-futura  font-bold text-base'>Accesos directos</p>
-                                        <nav>
-                                            <p className='p-2 hover:text-green-500'>Inicio</p>
-                                            <p className='p-2 hover:text-green-500'>Buscar propiedades</p>
-                                            <p className='p-2 hover:text-green-500'>Asesores</p>
-                                            <p className='p-2 hover:text-green-500'>Contactos</p>
-                                            <p className='p-2 hover:text-green-500'>Nosotros</p>
-                                            <p className='p-2 hover:text-green-500'>Politica de privacidad</p>
-                                        </nav>
-                                    </div>
-                                    <div className='flex-1 bg-white font-urbanist'>
-                                        <p className='text-gray-700 font-futura  font-bold'>Contáctanos</p>
-                                        <ul>
-                                            <li className='flex items-center mb-2'>
-                                                <div className='m-3'>
-                                                    <BiSolidPhoneCall className='text-green-500 text-2xl' />
-                                                </div>
-                                                <div className='text-gray-500 text-sm'>
-                                                    <h5>TELEFONO</h5>
-                                                    (511) 4444 555
-                                                </div>
-                                            </li>
-                                            <li className='flex items-center'>
-                                                <div className='bg-white m-3'>
-                                                    <IoIosMail className='text-green-500 text-2xl' />
-                                                </div>
-                                                <div className='flex flex-col text-xs'>
-                                                    <h5 className='text-gray-500 whitespace-normal'>EMAILS</h5>
-                                                    <a className='text-blue-500' href="info@remax.net.pe">info@remax.net.pe</a>
-                                                    <a className='text-blue-500' href="">ventas@remax.net.pe</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div className='text-center inset-x-0 flex justify-center bg-white p-4'>
-                                            <ul className='justify-center flex text-green-500 text-3xl bg-white p-4 shadow-md shadow-green-500  pl-10 pr-10 '>
-                                                <li>
-                                                    <FaFacebookF className="ml-1 " />
-                                                </li>
-                                                <li>
-                                                    <FaYoutube className="ml-8" />
-                                                </li>
-                                                <li>
-                                                    <FaTiktok className="ml-8" />
-                                                </li>
-                                                <li>
-                                                    <FaInstagram className="ml-8" />
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                <main className='bg-gray-200 mt-20'>
+                    <Outlet />
+                </main>
+
+                <footer className="bg-black/50 backdrop-blur-sm  py-8  bg-gradient-to-br from-blue-900 to-greenSky text-white">
+                    <div className="max-w-6xl mx-auto px-4">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                            <div>
+                                <div className="flex items-center space-x-2 mb-4">
+                                    {/* <Radio className="w-6 h-6 text-yellow-400" /> */}
+                                    <h3 className="text-xl font-bold">Radio Sembrador</h3>
+                                </div>
+                                <p className="text-white text-sm"> Somos una Emisora Cristiana comprometida con la labor evangelizadora en el pueblo de Tacna. La radio tiene la misión de difundir el mensaje de salvación y restauración a través de cada programa, música y mensaje que se transmite Desde Tacna – Peru.</p>
+                            </div>
+                            <div>
+                                <h4 className="font-bold mb-4">Enlaces</h4>
+                                <ul className="space-y-2 text-white">
+                                    <li><a href="/" className="hover:text-yellow-400 transition">Inicio</a></li>
+                                    <li><a href="/programming" className="hover:text-yellow-400 transition">Programas</a></li>
+                                    <li><a href="/nosotros" className="hover:text-yellow-400 transition">Nosotros</a></li>
+                                    <li><a href="/contacto" className="hover:text-yellow-400 transition">Contacto</a></li>
+                                    <li><a href="/donar" className="hover:text-yellow-400 transition">Donar</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-bold mb-4">Contacto</h4>
+                                <ul className="space-y-2 text-white">
+                                    <li>radiosembrador.info@gmail.com</li>
+                                    <li>(052) 578721</li>
+                                    <li>GAL, Tacna - Perú</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-bold mb-4">Síguenos</h4>
+                                <div className="flex space-x-4">
+                                    <a href="https://www.facebook.com/radiosembrador.pe" target="_blank" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://wa.me/51984715530" target="_blank" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                                        <FaWhatsapp className="text-2xl" />
+                                    </a>
+
                                 </div>
                             </div>
-                            <div className="text-xs mx-auto flex justify-center text-white bg-green-500 p-5">
-                                <nav>
-                                    <span>© Copyright 2024 Polariss Technology - Términos y Condiciones de Uso Términos y Condiciones de Contratación Política de privacidad.</span>
-                                </nav>
-                            </div>
-                        </footer>
-                        <div className='fixed bottom-3 right-3 z-50' >
-                            <button className='bg-green-500 p-5 rounded-full text-white text-4xl animate-pulse' onClick={toggleChatbot}>
-                                <SiWechat />
-                            </button>
-
-                            <div className={`bg-gray-200 right-3  transition-transform duration-300 absolute top-[-410px] p-0 text-gray-600 shadow-lg ${chatBot ? 'translate-x-0' : 'translate-x-[500px]'}`}>
-                                <ChatBot />
-                            </div>
+                        </div>
+                        <div className="border-t border-white/10 mt-8 pt-6 text-center text-white text-sm">
+                            <p>© Copyright Radio Sembrador 2025.</p>
                         </div>
                     </div>
-                )
-            }
+                </footer>
+            </div>
         </>
     )
 }

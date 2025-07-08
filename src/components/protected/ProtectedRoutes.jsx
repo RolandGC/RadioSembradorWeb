@@ -2,11 +2,11 @@ import { Navigate, useLocation } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 import Swal from 'sweetalert2';
 
-const ProtectedRoutes = ({ children, role }) => {
-    const { user, isAuth } = useUser();
+const ProtectedRoutes = ({ children }) => {
+    const { user } = useUser();
     const location = useLocation();
 
-    if (!isAuth) {
+    if (!user || Object.keys(user).length === 0) {
         Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -15,16 +15,7 @@ const ProtectedRoutes = ({ children, role }) => {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
 
-    if (role && !user.role == role) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "No tienes permisos para acceder a este sitio",
-        });
-        return <Navigate to="/" replace />;
-    }
-
     return children;
-}
+};
 
-export default ProtectedRoutes
+export default ProtectedRoutes;
