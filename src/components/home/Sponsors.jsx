@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import auspiciador1 from '/public/img/mission-logo.png';
-import auspiciador2 from '/public/img/logAsoc.png';
-import auspiciador3 from '/public/img/seb-logo.png';
+import auspiciador1 from '/img/mission-logo.png';
+import auspiciador2 from '/img/logAsoc.png';
+import auspiciador3 from '/img/seb-logo.png';
 
 const Sponsors = () => {
     const auspiciadores = [
-        { nombre: 'Auspiciador 1', logo: auspiciador1, link: 'https://www.auspiciador1.com' },
+        { nombre: 'Auspiciador 1', logo: auspiciador1, link: 'https://www.irishbaptistmissions.org' },
         { nombre: 'Auspiciador 2', logo: auspiciador2, link: 'https://www.auspiciador2.com' },
-        { nombre: 'Auspiciador 3', logo: auspiciador3, link: 'https://www.auspiciador3.com' },
+        { nombre: 'Auspiciador 3', logo: auspiciador3, link: 'https://www.sebtacna.org' },
     ];
 
     const [index, setIndex] = useState(0);

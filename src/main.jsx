@@ -35,6 +35,7 @@ import Us from './pages/pagesWeb/Us'
 import Programming from './pages/pagesWeb/Programming'
 import Give from './pages/pagesWeb/Give'
 import { Program } from './pages/pagesAdmin/Program'
+import { GeneralEdit } from './pages/pagesAdmin/GeneralEdit'
 
 
 const router = createBrowserRouter(
@@ -102,8 +103,8 @@ const router = createBrowserRouter(
           loader: loaderProperty
         },
         {
-          element: <Users />,
-          path: 'usuarios'
+          element: <GeneralEdit />,
+          path: 'general'
         },
         {
           element: <ListMessages />,

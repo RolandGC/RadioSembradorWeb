@@ -28,8 +28,8 @@ const links = [
         id: 3,
     },
     {
-        link: "usuarios",
-        text: "USUARIOS",
+        link: "general",
+        text: "General",
         id: 4,
     },
 ];

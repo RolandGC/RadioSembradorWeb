@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useUser from '../../hooks/useUser';
 import { useNavigate } from 'react-router-dom';
-import dep3 from "/img/dep3.jpeg";
+//import dep3 from "/img/dep3.jpeg";
 // daniel
 function SignIn() {
 
@@ -275,7 +275,7 @@ function SignIn() {
 
                 </div>
                 <div className="hidden rounded lg:block w-160">
-                    <img src={dep3} alt="" className="rounded w-100 h-120 object-cover" />
+                    {/* <img src={dep3} alt="" className="rounded w-100 h-120 object-cover" /> */}
                 </div>
             </div>
         </div>

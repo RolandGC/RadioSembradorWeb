@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { FaLocationDot } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
@@ -20,7 +20,7 @@ import Loading from '../../components/compGeneral/Loading';
 import { Selector } from '@rewind-ui/core';
 import ImageGallery from '../../components/properties/ImageGallery';
 import Sponsors from '../../components/home/Sponsors';
-
+import { supabase } from '../../services/supabase';
 
 function Arrow(props) {
     const { className, style, onClick } = props;
@@ -33,27 +33,35 @@ function Arrow(props) {
     )
 }
 
-const options = [
-    { value: 'all', label: 'Todos los inmuebles' },
-    { value: 'house', label: 'Casas' },
-    { value: 'department', label: 'Departamentos' },
-    { value: 'office', label: 'Oficinas' },
-    { value: 'lot', label: 'Terrenos' },
-    { value: 'rental', label: 'Locales' },
-    { value: 'rental', label: 'Condominio' },
-    { value: 'rental', label: 'Hotel' },
-    { value: 'rental', label: 'Oportunidades' },
-    { value: 'rental', label: 'Proyectos' },
-    { value: 'rental', label: 'Aires' },
-    { value: 'rental', label: 'Edificios' }
-];
-
 const Home = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(options[0]);
 
     const toggleDropdown = () => setIsOpen(!isOpen);
+    const [programmingData, setProgrammingData] = useState(null);
+    const [radioInfo, setRadioInfo] = useState(null);
+
+
+
+    const fetchRadioGeneral = async () => {
+        const { data, error } = await supabase
+            .from('radio') // ← Asegúrate de usar 'radio' si es la tabla correcta
+            .select('*')
+            .eq('id', 1)
+            .single();
+
+        if (error) {
+            console.error('Error al obtener radioGeneral:', error.message);
+        } else {
+            setRadioInfo(data);
+        }
+    };
+
+
+    useEffect(() => {
+        fetchRadioGeneral();
+    }, []);
+
 
     const selectOption = (option) => {
         setSelectedOption(option);
@@ -66,47 +74,6 @@ const Home = () => {
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
     };
-
-    const products = [
-        {
-            id: 1,
-            locate: 'Lima, Lima, Miraflores',
-            href: '/item',
-            imageSrc: '/public/img/dep3.jpeg',
-            imageAlt: "Front of men's Basic Tee in black.",
-            price: 'S/. 360,000.00 ',
-            ruc: 'En construcción',
-            society: '2 trimestre 2024',
-            type: 'HOTEL EN VENTA',
-            area: '5,642.00 m²',
-        },
-        {
-            id: 2,
-            locate: 'Lima, Lima, Miraflores',
-            href: '/item',
-            imageSrc: '/public/img/dep6.webp',
-            imageAlt: "Front of men's Basic Tee in black.",
-            price: 'S/. 360,000.00 ',
-            ruc: 'En construcción',
-            society: 'Junio 2025',
-            type: 'HOTEL EN VENTA',
-            area: '5,642.00 m²',
-        },
-        {
-            id: 3,
-            locate: 'Lima, Lima, Miraflores',
-            href: '/item',
-            imageSrc: '/public/img/dep1.jpeg',
-            imageAlt: "Front of men's Basic Tee in black.",
-            price: 'S/. 360,000.00 ',
-            ruc: 'En construcción',
-            society: 'Junio 2025',
-            type: 'HOTEL EN VENTA',
-            area: '5,642.00 m²',
-        },
-
-    ]
-
 
     var settings = {
         dots: true,
@@ -149,13 +116,21 @@ const Home = () => {
         <>
             <main className="relative z-10 bg-gray-200">
                 <div className="relative w-full h-160 overflow-hidden bg-cover bg-center">
-                    <video
-                        className="absolute top-0 left-0 w-full h-full object-cover"
-                        src={bg}
-                        autoPlay
-                        loop
-                        muted
-                    />
+                    {radioInfo?.image?.startsWith('data:image') ? (
+                        <img
+                            src={radioInfo?.image}
+                            alt="Imagen destacada"
+                            className="absolute top-0 left-0 w-full h-full object-cover"
+                        />
+                    ) : (
+                        <video
+                            className="absolute top-0 left-0 w-full h-full object-cover"
+                            src={bg}
+                            autoPlay
+                            loop
+                            muted
+                        />
+                    )}
 
                     <div className="relative z-10 items-center justify-center p-2 md:p-4 h-160 w-full  bg-black bg-opacity-35">
                         <h3 className="text-[40px] font-bold  text-white  text-center p-4 pb-3 font-futura  "><PrestenText1 /></h3>
