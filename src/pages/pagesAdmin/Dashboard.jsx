@@ -2,218 +2,103 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../../services/supabase';
 
 export const Dashboard = () => {
-    const [giveList, setGiveList] = useState([]);
-    const [values, setValues] = useState({
+    const [activeTab, setActiveTab] = useState('dv');
+    const [valuesGeneral, setValuesGeneral] = useState({
         id: null,
-        text: '',
-        mision: '',
-        vision: '',
+        image: ''
     });
 
-    const [valuesGive, setValuesGive] = useState({
-        id: null,
-        text: '',
-        nameBank: '',
-        code: '',
-        externalCode: '',
-        viewBank: false,
-        viewYape: false,
-    });
-
+    // Cargar datos de programación y radioGeneral
     useEffect(() => {
-        const fetchGiveData = async () => {
-            const { data, error } = await supabase.from('give').select('*');
-            if (error) {
-                console.error('Error al cargar tabla give:', error.message);
-            } else {
-                setGiveList(data);
-            }
+        const fetchData = async () => {
+            const { data: generalData, error: generalError } = await supabase
+                .from('radio')
+                .select('*')
+                .eq('id', 1)
+                .single();
+
+            if (generalError) console.error('Error tabla radioGeneral:', generalError.message);
+            else setValuesGeneral(generalData);
         };
 
-        fetchGiveData();
+        fetchData();
     }, []);
 
-
-    const handleChange = (e) => {
-        setValues({
-            ...values,
-            [e.target.name]: e.target.value,
+    const fileToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
         });
     };
 
-    const handleGiveChange = (e, index) => {
-        const updated = [...giveList];
-        updated[index] = {
-            ...updated[index],
-            [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value,
-        };
-        setGiveList(updated);
-    };
+    const handleImageGeneralUpload = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        let result;
-
-        if (values.id) {
-            const { id, ...dataToUpdate } = values;
-            result = await supabase.from('text1').update(dataToUpdate).eq('id', id);
-        } else {
-            result = await supabase.from('text1').insert(values);
-        }
-
-        if (result.error) {
-            alert('Error: ' + result.error.message);
-        } else {
-            alert('Guardado correctamente');
-            if (!values.id) {
-                setValues({
-                    id: null,
-                    text: '',
-                    mision: '',
-                    vision: '',
-                });
-            }
+        try {
+            const base64 = await fileToBase64(file);
+            const newValues = { ...valuesGeneral, image: base64 };
+            setValuesGeneral(newValues);
+        } catch (error) {
+            alert('Error al convertir imagen general: ' + error.message);
         }
     };
 
-    const handleGiveSubmit = async (e, item) => {
+    const handleSubmitGeneral = async (e) => {
         e.preventDefault();
-        const { id, ...updateFields } = item;
-        const { error } = await supabase.from('give').update(updateFields).eq('id', id);
+        const { id, ...updateFields } = valuesGeneral;
+        const { error } = await supabase.from('radio').update(updateFields).eq('id', id);
         if (error) {
-            alert(`Error al actualizar ID ${id}: ` + error.message);
+            alert(`Error al actualizar radioGeneral: ${error.message}`);
         } else {
-            alert(`Registro ID ${id} actualizado`);
+            alert('Imagen general actualizada correctamente');
         }
     };
 
-    const loadExistingData = async (id) => {
-        const { data, error } = await supabase.from('text1').select('*').eq('id', id).single();
-        if (data) setValues(data);
-    };
+    const handleDeleteImage = async () => {
+        const { error } = await supabase
+            .from('radio')
+            .update({ image: '' }) // También puedes usar `null` si prefieres
+            .eq('id', 1);
 
-    const loadExistingDataGive = async (id) => {
-        const { data, error } = await supabase.from('give').select('*').eq('id', id).single();
-        if (data) setValuesGive(data);
+        if (error) {
+            alert(`Error al eliminar la imagen: ${error.message}`);
+        } else {
+            alert('Imagen eliminada correctamente');
+            setValuesGeneral(prev => ({ ...prev, image: '' })); // Limpia localmente también
+        }
     };
-
-    useEffect(() => {
-        loadExistingData(1);
-        loadExistingDataGive(1);
-    }, []);
 
     return (
-        <div className="space-y-20 px-4 py-8 max-w-4xl mx-auto">
-            {/* FORMULARIO TEXT1 */}
-            <div className="flex-1">
-                <h1 className="text-2xl font-bold mb-4">Texto Nosotros</h1>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    {['text', 'mision', 'vision'].map((field) => (
-                        <div key={field}>
-                            <label htmlFor={field} className="block text-sm font-medium text-gray-700 mb-1 capitalize">
-                                {field}
-                            </label>
-                            <textarea
-                                id={field}
-                                name={field}
-                                value={values[field]}
-                                onChange={handleChange}
-                                placeholder={`Texto de ${field}`}
-                                className="block w-full ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 border-gray rounded-2xl focus:ring-indigo-600 text-gray-900 shadow-sm p-2"
-                                rows={4}
-                            />
-                        </div>
-                    ))}
+        <div className="px-4 py-8 max-w-4xl mx-auto">
+            {/* Sección para editar imagen general */}
+            <div className="mb-16 border border-gray-300 rounded-lg p-4">
+                <h2 className="text-xl font-semibold mb-3">Imagen de portada (radio)</h2>
+                <form onSubmit={handleSubmitGeneral}>
+                    <input type="file" accept="image/*" onChange={handleImageGeneralUpload} className="mb-4" />
+                    {valuesGeneral.image && (
+                        <img src={valuesGeneral.image} alt="Imagen" className="w-100 h-80 object-cover rounded-md mb-3" />
+                    )}
                     <button
                         type="submit"
-                        className="rounded-md bg-blue-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 w-40"
+                        className="rounded-md bg-greenSky px-4 py-2 text-white"
                     >
-                        {values.id ? 'Actualizar' : 'Guardar'}
+                        Guardar Imagen General
                     </button>
-                </form>
-            </div>
-
-            {/* FORMULARIO GIVE */}
-            <div className="flex-1">
-                <h1 className="text-2xl font-bold mb-4">Datos de Donaciones (Give)</h1>
-                {giveList.map((item, index) => (
-                    <form
-                        key={item.id}
-                        onSubmit={(e) => handleGiveSubmit(e, item)}
-                        className="mb-8 border border-gray-300 rounded-xl p-4"
-                    >
-                        <h2 className="text-lg font-semibold mb-2">Cuenta ID: {item.id}</h2>
-
-                        <label className="block mb-1">Texto:</label>
-                        <input
-                            type="text"
-                            name="text"
-                            value={item.text || ''}
-                            onChange={(e) => handleGiveChange(e, index)}
-                            className="w-full p-2 mb-3 rounded-md border"
-                        />
-
-                        <label className="block mb-1">Banco:</label>
-                        <input
-                            type="text"
-                            name="nameBank"
-                            value={item.nameBank || ''}
-                            onChange={(e) => handleGiveChange(e, index)}
-                            className="w-full p-2 mb-3 rounded-md border"
-                        />
-
-                        <label className="block mb-1">Código Cuenta:</label>
-                        <input
-                            type="text"
-                            name="code"
-                            value={item.code || ''}
-                            onChange={(e) => handleGiveChange(e, index)}
-                            className="w-full p-2 mb-3 rounded-md border"
-                        />
-
-                        <label className="block mb-1">CCI:</label>
-                        <input
-                            type="text"
-                            name="externalCode"
-                            value={item.externalCode || ''}
-                            onChange={(e) => handleGiveChange(e, index)}
-                            className="w-full p-2 mb-3 rounded-md border"
-                        />
-
-                        <label className="inline-flex items-center mb-2">
-                            <input
-                                type="checkbox"
-                                name="viewBank"
-                                checked={item.viewBank}
-                                onChange={(e) => handleGiveChange(e, index)}
-                                className="mr-2"
-                            />
-                            Mostrar en sección de bancos
-                        </label>
-                        <br />
-
-                        {/* <label className="inline-flex items-center mb-4">
-                            <input
-                                type="checkbox"
-                                name="viewYape"
-                                checked={item.viewYape}
-                                onChange={(e) => handleGiveChange(e, index)}
-                                className="mr-2"
-                            />
-                            Mostrar en sección de Yape
-                        </label> */}
-
-                        <div>
+                    {valuesGeneral.image && (
+                        <>
                             <button
-                                type="submit"
-                                className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-white"
+                                type="button"
+                                onClick={handleDeleteImage}
+                                className="rounded-md bg-red-500 text-white px-4 py-2 mb-3 ml-2"
                             >
-                                Guardar Cambios
+                                Eliminar Imagen
                             </button>
-                        </div>
-                    </form>
-                ))}
+                        </>
+                    )}
+                </form>
             </div>
         </div>
     );

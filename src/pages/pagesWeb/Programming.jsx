@@ -6,6 +6,7 @@ export default function Programming() {
     const [diaSeleccionado, setDiaSeleccionado] = useState(0);
     const [horaActual, setHoraActual] = useState(null);
     const [programmingData, setProgrammingData] = useState([]);
+    const [diaActual, setDiaActual] = useState(null);
 
     // Generar días y seleccionar el día actual automáticamente
     useEffect(() => {
@@ -13,7 +14,10 @@ export default function Programming() {
         const formatterFecha = new Intl.DateTimeFormat('es-PE', { day: '2-digit', month: 'short', timeZone: 'America/Lima' });
 
         const base = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Lima' }));
-        const hoyIndex = base.getDay(); // 0 = domingo, 1 = lunes, ..., 6 = sábado
+        const hoyIndex = base.getDay(); // 0 = domingo ... 6 = sábado
+
+        setDiaActual(hoyIndex);         // <--- AÑADIDO
+        setDiaSeleccionado(hoyIndex);   // <--- YA EXISTÍA
 
         // Generar 7 días desde domingo a sábado (0 a 6)
         const dias = Array.from({ length: 7 }).map((_, i) => {
@@ -30,9 +34,7 @@ export default function Programming() {
         });
 
         setDiasSemana(dias);
-        setDiaSeleccionado(hoyIndex);
     }, []);
-
 
     useEffect(() => {
         const fecha = new Date().toLocaleString("en-US", { timeZone: "America/Lima" });
@@ -69,7 +71,7 @@ export default function Programming() {
 
 
     const esProgramaActual = (horaProgramada) => {
-        if (horaActual === null) return false;
+        if (horaActual === null || diaSeleccionado !== diaActual) return false;
         const horaDelPrograma = parseInt(horaProgramada.split(":")[0]);
         return horaDelPrograma === horaActual;
     };
@@ -113,32 +115,34 @@ export default function Programming() {
                             className={`rounded shadow-sm overflow-hidden transition-all duration-300 ${actual ? 'bg-green-100 border-l-4 border-greenSky' : 'bg-white'
                                 }`}
                         >
-                            <div className="flex items-center p-4">
-                                <div className="flex-shrink-0 rounded-full overflow-hidden">
+                            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 p-4">
+                                <div className="flex-shrink-0 w-full md:w-auto rounded-md overflow-hidden">
                                     <img
                                         src={programa.image || "/img/logoVertical.png"}
                                         alt={programa.name}
-                                        className="w-20 h-20 object-cover"
+                                        className="w-full md:w-20 h-40 md:h-20 object-cover rounded"
                                     />
                                 </div>
-                                <div className="ml-6 flex-grow">
+                                <div className="flex flex-col flex-grow">
                                     <h3 className={`text-xl font-bold uppercase ${actual ? 'text-greenSky' : ''}`}>
                                         {programa.name}
                                     </h3>
                                     <p className="text-gray-600">{programa.description || ''}</p>
+
+                                    {programa.textTemp && (
+                                        <div className="w-full md:w-40 bg-green-200 p-2 mt-2 text-sm rounded-md">
+                                            {programa.textTemp}
+                                        </div>
+                                    )}
                                 </div>
-                                {programa.newProgram && (
+                                {/* {programa.newProgram && (
                                     <div className='w-40 bg-green-200 p-3 m-1 text-sm rounded-md'>
                                         Nuevo programa
                                     </div>
-                                )}
-                                {programa.endProgram && (
-                                    <div className='w-40 bg-red-200 p-3 m-1 text-sm rounded-md'>
-                                        Programa próximo a acabar
-                                    </div>
-                                )}
-                                <div className="text-gray-300 text-5xl font-light">
+                                )} */}
+                                <div className="text-gray-300 text-5xl font-light ml-auto whitespace-nowrap">
                                     {programa.timeStart}
+                                    {programa.timeEnd?.trim() && ` - ${programa.timeEnd}`}
                                 </div>
                             </div>
                         </div>

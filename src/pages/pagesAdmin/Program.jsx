@@ -117,6 +117,16 @@ export const Program = () => {
                     className="w-full p-2 mb-3 rounded-md border"
                 />
 
+                <label className="block mb-1">Texto Temporal:</label>
+                <textarea
+                    name='textTemp'
+                    type='text'
+                    value={item.textTemp || ''}
+                    onChange={(e) => handleProgramChange(e, programList.indexOf(item))}
+                    className="w-full p-2 mb-3 rounded-md border"
+                    rows={3}
+                />
+
                 <label className="block mb-1">Imagen del programa:</label>
                 <input
                     type="file"

@@ -1,9 +1,7 @@
-// Parte superior del archivo (encima del componente Program)
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../services/supabase';
 
 export const GeneralEdit = () => {
-    const [programList, setProgramList] = useState([]);
     const [activeTab, setActiveTab] = useState('dv');
     const [valuesGeneral, setValuesGeneral] = useState({
         id: null,
@@ -13,14 +11,6 @@ export const GeneralEdit = () => {
     // Cargar datos de programación y radioGeneral
     useEffect(() => {
         const fetchData = async () => {
-            const { data: programmingData, error: programError } = await supabase
-                .from('programming')
-                .select('*')
-                .order('id', { ascending: true });
-
-            if (programError) console.error('Error tabla program:', programError.message);
-            else setProgramList(programmingData);
-
             const { data: generalData, error: generalError } = await supabase
                 .from('radio')
                 .select('*')
@@ -59,7 +49,7 @@ export const GeneralEdit = () => {
     const handleSubmitGeneral = async (e) => {
         e.preventDefault();
         const { id, ...updateFields } = valuesGeneral;
-        const { error } = await supabase.from('radioGeneral').update(updateFields).eq('id', id);
+        const { error } = await supabase.from('radio').update(updateFields).eq('id', id);
         if (error) {
             alert(`Error al actualizar radioGeneral: ${error.message}`);
         } else {

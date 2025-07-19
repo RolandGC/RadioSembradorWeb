@@ -18,7 +18,12 @@ import useUser from '../../hooks/useUser'; // ajusta la ruta si es diferente
 
 const links = [
     {
-        link: "dashboard",
+        link: "",
+        text: "Inicio",
+        id: 1,
+    },
+    {
+        link: "usRadio",
         text: "Nosotros",
         id: 2,
     },
@@ -28,8 +33,8 @@ const links = [
         id: 3,
     },
     {
-        link: "general",
-        text: "General",
+        link: "give",
+        text: "Donar",
         id: 4,
     },
 ];
