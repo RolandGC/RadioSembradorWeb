@@ -112,7 +112,7 @@ export const UsRadio = () => {
                     </div>
                     <button
                         type="submit"
-                        className="rounded-md bg-blue-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 w-40"
+                        className="rounded-md bg-greenSky px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 w-40"
                     >
                         {values.id ? 'Actualizar' : 'Guardar'}
                     </button>
@@ -234,9 +234,9 @@ const CollaboratorForm = ({ data, onUpdated }) => {
 
             <button
                 type="submit"
-                className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800"
+                className="bg-greenSky text-white px-4 py-2 rounded-md hover:bg-blue-800"
             >
-                Actualizar
+                Guardar Cambios
             </button>
         </form>
     );

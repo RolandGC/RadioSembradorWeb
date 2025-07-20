@@ -138,7 +138,7 @@ export const Program = () => {
                     <img src={item.image} alt="Imagen" className="w-24 h-24 object-cover rounded-md" />
                 )}
 
-                <label className="inline-flex items-center mb-2 mr-4">
+                {/* <label className="inline-flex items-center mb-2 mr-4">
                     <input
                         type="checkbox"
                         name="newProgram"
@@ -158,7 +158,7 @@ export const Program = () => {
                         className="mr-2"
                     />
                     Programa por finalizar
-                </label>
+                </label> */}
 
                 <div>
                     <button

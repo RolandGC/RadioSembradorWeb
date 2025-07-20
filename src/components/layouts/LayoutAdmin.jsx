@@ -37,6 +37,11 @@ const links = [
         text: "Donar",
         id: 4,
     },
+    {
+        link: "messages",
+        text: "Mensajes",
+        id: 5,
+    },
 ];
 
 const LayoutAdmin = () => {

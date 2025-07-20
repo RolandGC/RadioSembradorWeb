@@ -27,6 +27,7 @@ import { Program } from './pages/pagesAdmin/Program'
 import { GeneralEdit } from './pages/pagesAdmin/GeneralEdit'
 import { UsRadio } from './pages/pagesAdmin/UsRadio'
 import { GiveAdmin } from './pages/pagesAdmin/GiveAdmin'
+import ContactList from './pages/pagesAdmin/Messages'
 
 
 const router = createBrowserRouter(
@@ -100,6 +101,11 @@ const router = createBrowserRouter(
           element: <GiveAdmin />,
           path: 'give'
         },
+        {
+          element: <ContactList />,
+          path: 'messages'
+        },
+        
         {
           path: "*",
           element: <Navigate to="dashboard" replace />

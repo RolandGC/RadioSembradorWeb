@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import api from '../../settings/api'
 import Swal from 'sweetalert2';
 import building from "/public/img/micro.jpg";
+import { supabase } from '../../services/supabase';
+
 
 function Contact() {
 
@@ -11,24 +12,45 @@ function Contact() {
     const [errores, setErrores] = useState({});
 
     const handleSubmitContact = async (formData) => {
+        const { nombres, apellidos, email, celular, mensaje } = formData;
+
         try {
-            const response = await api.post('/contact/create/', formData);
-            if (response.status == 201) {
+            const { error } = await supabase.from('contact').insert([
+                {
+                    name: `${nombres} ${apellidos}`,
+                    mail: email,
+                    phone: celular,
+                    message: mensaje
+                }
+            ]);
+
+            if (error) {
+                console.error('Error al guardar en Supabase:', error.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrió un error al enviar el formulario.',
+                });
+            } else {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: response.data.message,
+                    title: "Mensaje enviado correctamente",
                     showConfirmButton: false,
                     timer: 1500
                 });
+                reset();
             }
-            // const data = response.data;
-            reset()
-        } catch (error) {
-            console.error('Error submitting form', error);
-            setErrores(error.response.data);
+        } catch (err) {
+            console.error('Error inesperado:', err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error inesperado',
+                text: 'Ocurrió un problema inesperado.',
+            });
         }
-    }
+    };
+
     return (
         <div className='bg-white border-t-2'>
             <div className="max-w-6xl w-11/12 mx-auto flex flex-col lg:flex-row lg:items-center">
@@ -38,13 +60,13 @@ function Contact() {
                 <form className='lg:w-full p-3 lg:p-10' noValidate onSubmit={handleSubmit(handleSubmitContact)}>
                     <div className="space-y-1 font-urbanist">
                         <div className="border-b border-gray-900/10 pb-4">
-                            <h1 className="text-xl md:text-3xl lg:text-5xl font-bold leading-7 text-blue-900">CONTÁCTANOS</h1>
+                            <h1 className="text-xl md:text-3xl lg:text-5xl font-bold leading-7 text-greenSky">CONTÁCTANOS</h1>
                             <p className="text-sm leading-6 text-black my-5">
                                 Rellena el formulario para ponernos en contacto.
                             </p>
                             <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6"> {/* Adjusted gap-y */}
                                 <div className="sm:col-span-3">
-                                    <label htmlFor="nombres" className="block text-sm font-bold leading-6 text-blue-900">
+                                    <label htmlFor="nombres" className="block text-sm font-bold leading-6 text-greenSky">
                                         Nombres
                                     </label>
                                     <div className="mt-1"> {/* Reduced margin-top */}
@@ -62,7 +84,7 @@ function Contact() {
                                 </div>
 
                                 <div className="sm:col-span-3">
-                                    <label htmlFor="apellidos" className="block text-sm font-bold leading-6 text-blue-900">
+                                    <label htmlFor="apellidos" className="block text-sm font-bold leading-6 text-greenSky">
                                         Apellidos
                                     </label>
                                     <div className="mt-1"> {/* Reduced margin-top */}
@@ -80,7 +102,7 @@ function Contact() {
                                 </div>
 
                                 <div className="sm:col-span-3">
-                                    <label htmlFor="email" className="block text-sm font-bold leading-6 text-blue-900">
+                                    <label htmlFor="email" className="block text-sm font-bold leading-6 text-greenSky">
                                         Email
                                     </label>
                                     <div className="mt-1"> {/* Reduced margin-top */}
@@ -104,7 +126,7 @@ function Contact() {
                                 </div>
 
                                 <div className="sm:col-span-3">
-                                    <label htmlFor="celular" className="block text-sm font-bold leading-6 text-blue-900">
+                                    <label htmlFor="celular" className="block text-sm font-bold leading-6 text-greenSky">
                                         Teléfono
                                     </label>
                                     <div className="mt-1"> {/* Reduced margin-top */}
@@ -137,7 +159,7 @@ function Contact() {
 
 
                                 <div className="sm:col-span-3">
-                                    <label htmlFor="tipo_solicitud" className="block w-full text-sm font-bold leading-6 text-blue-900">
+                                    <label htmlFor="tipo_solicitud" className="block w-full text-sm font-bold leading-6 text-greenSky">
                                         Tipo de solicitud
                                     </label>
                                     <div className="mt-1"> {/* Reduced margin-top */}
@@ -160,7 +182,7 @@ function Contact() {
 
 
                                 <div className="sm:col-span-3">
-                                    <label htmlFor="ciudad" className="block text-sm font-bold leading-6 text-blue-900">
+                                    <label htmlFor="ciudad" className="block text-sm font-bold leading-6 text-greenSky">
                                         Ciudad
                                     </label>
                                     <div className="mt-1"> {/* Reduced margin-top */}
@@ -177,43 +199,8 @@ function Contact() {
                                     </div>
                                 </div>
 
-                                <div className="sm:col-span-3">
-                                    <label htmlFor="provincia" className="block text-sm font-bold leading-6 text-blue-900">
-                                        Provincia
-                                    </label>
-                                    <div className="mt-1"> {/* Reduced margin-top */}
-                                        <input
-                                            type="text"
-                                            name="provincia"
-                                            id="provincia"
-                                            autoComplete="provincia"
-                                            className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2 ${errors.provincia ? 'ring-red-500' : ''}`}
-                                            {...register("provincia", { required: "La provincia es obligatoria" })}
-                                        />
-                                        {errors.provincia && <p className="text-red-500 text-sm">{errors.provincia.message}</p>}
-                                        {errores?.provincia && <p className="text-red-500 text-sm">{errores?.provincia[0]}</p>}
-                                    </div>
-                                </div>
-
-                                <div className="sm:col-span-3">
-                                    <label htmlFor="codigo_postal" className="block text-sm font-bold leading-6 text-blue-900">
-                                        Código Postal
-                                    </label>
-                                    <div className="mt-1"> {/* Reduced margin-top */}
-                                        <input
-                                            type="number"
-                                            name="codigo_postal"
-                                            id="codigo_postal"
-                                            autoComplete="codigo_postal"
-                                            className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2 ${errors.codigo_postal ? 'ring-red-500' : ''}`}
-                                            {...register("codigo_postal", { required: "El código postal es obligatorio" })}
-                                        />
-                                        {errors.codigo_postal && <p className="text-red-500 text-sm">{errors.codigo_postal.message}</p>}
-                                        {errores?.codigo_postal && <p className="text-red-500 text-sm">{errores?.codigo_postal[0]}</p>}
-                                    </div>
-                                </div>
                                 <div className="col-span-full">
-                                    <label htmlFor="mensaje" className="block text-sm font-bold leading-6 text-blue-900">
+                                    <label htmlFor="mensaje" className="block text-sm font-bold leading-6 text-greenSky">
                                         Mensaje
                                     </label>
                                     <div className="mt-1"> {/* Reduced margin-top */}
@@ -232,27 +219,13 @@ function Contact() {
                             </div>
                         </div>
 
-                        <div className="border-b border-gray-900/10 pb-1 pt-1"> {/* Reduced padding-bottom */}
-                            <h2 className="text-base font-semibold leading-7 text-blue-900">Notificaciones</h2>
-                            <div className='flex'>
-                                <div className='flex items-center mt-1'> {/* Reduced margin-top */}
-                                    <input
-                                        type="checkbox"
-                                        name='terminos'
-                                        className='form-checkbox h-4 w-4 text-blue-900 rounded-full mr-2'
-                                    />
-                                    <span className='text-sm leading-6 text-gray-600'>
-                                        Siempre te informaremos sobre cambios importantes, pero tú eliges qué más quieres escuchar.
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div className="mt-6 flex items-center justify-center gap-x-6">
                         <button
                             type="submit"
-                            className="rounded-md bg-blue-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-900 w-40"
+                            className="rounded-md bg-greenSky px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-greenSky w-40"
                         >
                             ENVIAR
                         </button>

@@ -18,6 +18,7 @@ import ChatBot from '../compGeneral/ChatBot';
 import Loading from '../compGeneral/Loading';
 import { Dropdown, Button, Avatar } from '@rewind-ui/core'
 import logo2 from '/public/img/logo2.png'
+import { FaWhatsappSquare } from "react-icons/fa";
 
 import useUser from '../../hooks/useUser';
 import RadioPlayer from '../home/RadioPlayer';
@@ -190,14 +191,17 @@ const LayoutMain = () => {
                 </div>
             </footer>
             <div className='fixed bottom-3 right-3 z-50' >
-                <button className='bg-yellow border-yellow-600 p-3 rounded-2xl text-white font-futura font-bold text-xl animate-pulse shadow-md hover:shadow-lg focus:shadow-lg' onClick={toggleChatbot}>
-                    <div>
-                        <span>¡Donar Ahora!</span>
-                    </div>
-                </button>
+                <a
+                    href="https://wa.me/51984715530"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className='border-yellow-600 p-3 rounded-2xl text-white font-futura font-bold text-xl animate-pulse shadow-md hover:shadow-lg focus:shadow-lg inline-block'
+                >
+                    <FaWhatsappSquare className='text-[58px] text-green-500 bg-white rounded-lg' />
+                </a>
+                
 
                 <div className={`bg-gray-200 rounded-2xl right-3  transition-transform duration-300 absolute top-[-410px] p-0 text-gray-600 shadow-lg ${chatBot ? 'translate-x-0' : 'translate-x-[500px]'}`}>
-                    {/* <ChatBot /> */}
                     <DonationInfo />
                 </div>
             </div>

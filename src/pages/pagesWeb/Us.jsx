@@ -20,8 +20,7 @@ const Us = () => {
             console.error('Error al obtener datos:', textError || collabError);
         } else {
             setProducts(textData);
-            setCollaborators(collabData);
-        }
+            setCollaborators(collabData.sort((a, b) => a.id - b.id));        }
         setLoading(false);
     };
 
@@ -38,7 +37,7 @@ const Us = () => {
             {/* Sección de bienvenida */}
             <section
                 className="relative bg-cover bg-center bg-no-repeat rounded-xl overflow-hidden"
-                style={{ backgroundImage: `url(${record?.imagen || consola})` }}
+                style={{ backgroundImage: `url(${record?.image || consola})` }}
             >
                 <div className="absolute inset-0 bg-black/15 bg-gradient-to-r from-black/70 to-black/30 rounded-xl"></div>
                 <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
@@ -85,7 +84,7 @@ const Us = () => {
                 <h2 className='text-4xl font-bold text-center font-futura mb-12'>Nuestro equipo</h2>
 
                 <div
-                    className={`mx-auto max-w-screen-xl gap-10 ${collaborators.length <= 2
+                    className={`mx-auto max-w-screen-xl gap-10 ${collaborators.length <= 3
                             ? 'flex flex-wrap justify-center'
                             : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
                         }`}
@@ -96,9 +95,9 @@ const Us = () => {
                             className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 w-[270px]"
                         >
                             <div className="h-64 w-full bg-gray-200">
-                                {collab.imagen ? (
+                                {collab.image ? (
                                     <img
-                                        src={collab.imagen}
+                                        src={collab.image}
                                         alt={`${collab.name} ${collab.lastname}`}
                                         className="h-full w-full object-cover object-center"
                                     />
@@ -114,7 +113,6 @@ const Us = () => {
                     ))}
                 </div>
             </div>
-
         </div>
     );
 };
