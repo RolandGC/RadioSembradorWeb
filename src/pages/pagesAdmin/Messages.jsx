@@ -21,6 +21,20 @@ const ContactList = () => {
         fetchContacts();
     }, []);
 
+    const formatDate = (isoString) => {
+        const date = new Date(isoString);
+        return date.toLocaleString("es-PE", {
+            timeZone: "America/Lima",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+        });
+    };
+
+
     return (
         <div className="p-6 max-w-5xl mx-auto">
             <h1 className="text-2xl font-bold mb-4 text-center">Mensajes de Contacto</h1>
@@ -38,6 +52,7 @@ const ContactList = () => {
                                 <th className="px-4 py-2 text-left">Correo</th>
                                 <th className="px-4 py-2 text-left">Teléfono</th>
                                 <th className="px-4 py-2 text-left">Mensaje</th>
+                                <th className="px-4 py-2 text-left">Fecha</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,6 +62,7 @@ const ContactList = () => {
                                     <td className="px-4 py-2">{contact.mail}</td>
                                     <td className="px-4 py-2">{contact.phone}</td>
                                     <td className="px-4 py-2">{contact.message}</td>
+                                    <td className="px-4 py-2">{formatDate(contact.created_at)}</td>
                                 </tr>
                             ))}
                         </tbody>

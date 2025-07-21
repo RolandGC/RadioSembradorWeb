@@ -67,7 +67,7 @@ function Contact() {
                             <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6"> {/* Adjusted gap-y */}
                                 <div className="sm:col-span-3">
                                     <label htmlFor="nombres" className="block text-sm font-bold leading-6 text-greenSky">
-                                        Nombres
+                                        Nombres y apellidos
                                     </label>
                                     <div className="mt-1"> {/* Reduced margin-top */}
                                         <input
@@ -83,11 +83,11 @@ function Contact() {
                                     </div>
                                 </div>
 
-                                <div className="sm:col-span-3">
+                                {/* <div className="sm:col-span-3">
                                     <label htmlFor="apellidos" className="block text-sm font-bold leading-6 text-greenSky">
                                         Apellidos
                                     </label>
-                                    <div className="mt-1"> {/* Reduced margin-top */}
+                                    <div className="mt-1"> 
                                         <input
                                             type="text"
                                             name="apellidos"
@@ -99,7 +99,7 @@ function Contact() {
                                         {errors.apellidos && <p className="text-red-500 text-sm">{errors.apellidos.message}</p>}
                                         {errores?.apellidos && <p className="text-red-500 text-sm">{errores?.apellidos[0]}</p>}
                                     </div>
-                                </div>
+                                </div> */}
 
                                 <div className="sm:col-span-3">
                                     <label htmlFor="email" className="block text-sm font-bold leading-6 text-greenSky">
@@ -177,25 +177,6 @@ function Contact() {
                                         </select>
                                         {errors.tipo_solicitud && <p className="text-red-500 text-sm">{errors.tipo_solicitud.message}</p>}
                                         {errores?.tipo_solicitud && <p className="text-red-500 text-sm">{errores?.tipo_solicitud[0]}</p>}
-                                    </div>
-                                </div>
-
-
-                                <div className="sm:col-span-3">
-                                    <label htmlFor="ciudad" className="block text-sm font-bold leading-6 text-greenSky">
-                                        Ciudad
-                                    </label>
-                                    <div className="mt-1"> {/* Reduced margin-top */}
-                                        <input
-                                            type="text"
-                                            name="ciudad"
-                                            id="ciudad"
-                                            autoComplete="ciudad"
-                                            className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2 ${errors.ciudad ? 'ring-red-500' : ''}`}
-                                            {...register("ciudad", { required: "La ciudad es obligatoria" })}
-                                        />
-                                        {errors.ciudad && <p className="text-red-500 text-sm">{errors.ciudad.message}</p>}
-                                        {errores?.ciudad && <p className="text-red-500 text-sm">{errores?.ciudad[0]}</p>}
                                     </div>
                                 </div>
 
